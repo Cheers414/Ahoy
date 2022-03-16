@@ -22,9 +22,9 @@ namespace ahoy
             panelWorkspace.BringToFront();
         }
 
-        private void buttonLogout_Click(object sender, EventArgs e)
+
+        private void picButtonGoToUser_Click(object sender, EventArgs e)
         {
-            //TO DO : 添加Type Logout 的LOG
 
         }
     }

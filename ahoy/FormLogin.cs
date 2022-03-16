@@ -54,7 +54,6 @@ namespace ahoy
         {
             txtInputAccount.Text = "";
             txtInputPassword.Text = "";
-
         }
     }
 }

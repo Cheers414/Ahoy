@@ -13,12 +13,14 @@ namespace ahoy
         /// 應用程式的主要進入點。
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
-#if DEBUG
-            DialogResult dr = MessageBox.Show("啟動單元測試", Properties.Resources.cropName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            Application.ThreadException += Application_ThreadException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+#if DEBUG
+            DialogResult dr = MessageBox.Show("啟動單元測試", Properties.Resources.cropName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            
             if (dr == DialogResult.Yes)
             {
                 Application.Run(new FormUnitTest());
@@ -36,11 +38,8 @@ namespace ahoy
                     Application.Exit();
                 }
             }
-
-            Application.ThreadException += Application_ThreadException;
+            
 #else
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
             if (new formLogin().DialogResult == DialogResult.OK)
                 {
                     Application.Run(new formMain());
@@ -49,7 +48,6 @@ namespace ahoy
                 {
                     Application.Exit();
                 }
-            Application.ThreadException += Application_ThreadException;
 #endif
         }
 
