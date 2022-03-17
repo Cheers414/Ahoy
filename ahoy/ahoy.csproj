@@ -67,6 +67,36 @@
     <Compile Include="globalVariable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControlApproval.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlApproval.Designer.cs">
+      <DependentUpon>UserControlApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAttendance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAttendance.Designer.cs">
+      <DependentUpon>UserControlAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlHR.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlHR.Designer.cs">
+      <DependentUpon>UserControlHR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSalary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSalary.Designer.cs">
+      <DependentUpon>UserControlSalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlShift.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlShift.Designer.cs">
+      <DependentUpon>UserControlShift.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +116,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControlApproval.resx">
+      <DependentUpon>UserControlApproval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAttendance.resx">
+      <DependentUpon>UserControlAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlHR.resx">
+      <DependentUpon>UserControlHR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSalary.resx">
+      <DependentUpon>UserControlSalary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlShift.resx">
+      <DependentUpon>UserControlShift.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

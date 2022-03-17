@@ -19,7 +19,7 @@ namespace ahoy
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 #if DEBUG
-            DialogResult dr = MessageBox.Show("啟動單元測試", Properties.Resources.cropName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult dr = MessageBox.Show("啟動單元測試", Properties.Resources.systemName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             
             if (dr == DialogResult.Yes)
             {
@@ -53,7 +53,7 @@ namespace ahoy
 
         public static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            MessageBox.Show("觸發預期外錯誤", Properties.Resources.cropName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("觸發預期外錯誤", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
     }

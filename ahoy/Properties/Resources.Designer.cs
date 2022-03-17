@@ -81,15 +81,6 @@ namespace ahoy.Properties {
         }
         
         /// <summary>
-        ///   查詢類似 寶忠公司員工管理系統 的當地語系化字串。
-        /// </summary>
-        public static string cropName {
-            get {
-                return ResourceManager.GetString("cropName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
         public static System.Drawing.Bitmap HR {
@@ -116,6 +107,15 @@ namespace ahoy.Properties {
             get {
                 object obj = ResourceManager.GetObject("Shift", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 寶忠公司員工管理系統 的當地語系化字串。
+        /// </summary>
+        public static string systemName {
+            get {
+                return ResourceManager.GetString("systemName", resourceCulture);
             }
         }
     }

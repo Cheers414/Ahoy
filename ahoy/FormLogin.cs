@@ -31,7 +31,7 @@ namespace ahoy
 #endif
             if (txtInputAccount.Text == account && txtInputPassword.Text == password)
             {
-                MessageBox.Show("登入成功", Properties.Resources.cropName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("登入成功", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -45,7 +45,7 @@ namespace ahoy
                 {
                     errorMsg += "密碼\n";
                 }
-                MessageBox.Show(errorMsg + "存在錯誤", Properties.Resources.cropName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(errorMsg + "存在錯誤", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
