@@ -30,7 +30,6 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -40,6 +39,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
+            this.userControlApproval1 = new ahoy.UserControlApproval();
             this.SuspendLayout();
             // 
             // button1
@@ -62,20 +62,13 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(112, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1064, 631);
-            this.panel1.TabIndex = 2;
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(12, 130);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(94, 33);
             this.button3.TabIndex = 3;
-            this.button3.Text = "Login";
+            this.button3.Text = "D";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -151,11 +144,22 @@
             this.button11.Text = "Login";
             this.button11.UseVisualStyleBackColor = true;
             // 
+            // userControlApproval1
+            // 
+            this.userControlApproval1.BackColor = System.Drawing.Color.White;
+            this.userControlApproval1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.userControlApproval1.Location = new System.Drawing.Point(114, 15);
+            this.userControlApproval1.Margin = new System.Windows.Forms.Padding(5);
+            this.userControlApproval1.Name = "userControlApproval1";
+            this.userControlApproval1.Size = new System.Drawing.Size(1064, 620);
+            this.userControlApproval1.TabIndex = 12;
+            // 
             // FormUnitTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.userControlApproval1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button9);
@@ -167,7 +171,6 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.panel1);
             this.Name = "FormUnitTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "單元測試";
@@ -179,7 +182,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
@@ -189,5 +191,6 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
+        private UserControlApproval userControlApproval1;
     }
 }
