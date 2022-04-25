@@ -20,6 +20,7 @@ namespace ahoy
         private void formMain_Load(object sender, EventArgs e)
         {
             panelWorkspace.BringToFront();
+            pictureBoxLogo.Image = Image.FromFile(AppContext.BaseDirectory + @"Images\Logo.png");
         }
 
 

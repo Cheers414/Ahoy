@@ -20,7 +20,7 @@ namespace ahoy
         {
 
 
-
+            base.BringToFront();
         }
     }
 }

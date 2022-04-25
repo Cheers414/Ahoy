@@ -24,12 +24,37 @@ namespace ahoy
 
         private void button3_Click(object sender, EventArgs e)
         {
-         
+            userControlApproval1.BringToFront();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             new formLogin().ShowDialog();
+        }
+
+        private void FormUnitTest_Load(object sender, EventArgs e)
+        {
+            pictureBox1.BringToFront();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            userControlAttendance1.BringToFront();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            userControlHR1.BringToFront();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            userControlSalary1.BringToFront();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            userControlShift1.BringToFront();
         }
     }
 }

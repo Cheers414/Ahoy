@@ -18,9 +18,9 @@ namespace ahoy
         }
         public new void BringToFront()//此處為元件初始化
         {
-            
 
 
+          base.BringToFront();
         }
     }
 }

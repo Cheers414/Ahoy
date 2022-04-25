@@ -33,18 +33,18 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.uiAvatar6 = new Sunny.UI.UIAvatar();
+            this.uiAvatar5 = new Sunny.UI.UIAvatar();
+            this.uiAvatar4 = new Sunny.UI.UIAvatar();
+            this.uiAvatar3 = new Sunny.UI.UIAvatar();
+            this.uiAvatar2 = new Sunny.UI.UIAvatar();
+            this.uiAvatar1 = new Sunny.UI.UIAvatar();
             this.FrmD02 = new System.Windows.Forms.TabPage();
             this.FrmD03 = new System.Windows.Forms.TabPage();
             this.FrmD04 = new System.Windows.Forms.TabPage();
             this.FrmD05 = new System.Windows.Forms.TabPage();
             this.FrmD06 = new System.Windows.Forms.TabPage();
             this.FrmD07 = new System.Windows.Forms.TabPage();
-            this.uiAvatar1 = new Sunny.UI.UIAvatar();
-            this.uiAvatar2 = new Sunny.UI.UIAvatar();
-            this.uiAvatar3 = new Sunny.UI.UIAvatar();
-            this.uiAvatar4 = new Sunny.UI.UIAvatar();
-            this.uiAvatar5 = new Sunny.UI.UIAvatar();
-            this.uiAvatar6 = new Sunny.UI.UIAvatar();
             this.tabControl1.SuspendLayout();
             this.FrmD01.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -58,8 +58,8 @@
             this.tabControl1.Controls.Add(this.FrmD03);
             this.tabControl1.Controls.Add(this.FrmD04);
             this.tabControl1.Controls.Add(this.FrmD05);
-            this.tabControl1.Controls.Add(this.FrmD06);
             this.tabControl1.Controls.Add(this.FrmD07);
+            this.tabControl1.Controls.Add(this.FrmD06);
             this.tabControl1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Multiline = true;
@@ -116,6 +116,102 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "休 假 餘 額 一 覽";
             // 
+            // uiAvatar6
+            // 
+            this.uiAvatar6.AvatarSize = 125;
+            this.uiAvatar6.FillColor = System.Drawing.Color.CornflowerBlue;
+            this.uiAvatar6.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiAvatar6.ForeColor = System.Drawing.Color.White;
+            this.uiAvatar6.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
+            this.uiAvatar6.Location = new System.Drawing.Point(776, 53);
+            this.uiAvatar6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiAvatar6.Name = "uiAvatar6";
+            this.uiAvatar6.Size = new System.Drawing.Size(173, 144);
+            this.uiAvatar6.Style = Sunny.UI.UIStyle.Custom;
+            this.uiAvatar6.TabIndex = 5;
+            this.uiAvatar6.Text = "uiAvatar6";
+            this.uiAvatar6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiAvatar5
+            // 
+            this.uiAvatar5.AvatarSize = 125;
+            this.uiAvatar5.FillColor = System.Drawing.Color.CornflowerBlue;
+            this.uiAvatar5.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiAvatar5.ForeColor = System.Drawing.Color.White;
+            this.uiAvatar5.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
+            this.uiAvatar5.Location = new System.Drawing.Point(625, 53);
+            this.uiAvatar5.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiAvatar5.Name = "uiAvatar5";
+            this.uiAvatar5.Size = new System.Drawing.Size(173, 144);
+            this.uiAvatar5.Style = Sunny.UI.UIStyle.Custom;
+            this.uiAvatar5.TabIndex = 4;
+            this.uiAvatar5.Text = "uiAvatar5";
+            this.uiAvatar5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiAvatar4
+            // 
+            this.uiAvatar4.AvatarSize = 125;
+            this.uiAvatar4.FillColor = System.Drawing.Color.CornflowerBlue;
+            this.uiAvatar4.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiAvatar4.ForeColor = System.Drawing.Color.White;
+            this.uiAvatar4.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
+            this.uiAvatar4.Location = new System.Drawing.Point(476, 53);
+            this.uiAvatar4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiAvatar4.Name = "uiAvatar4";
+            this.uiAvatar4.Size = new System.Drawing.Size(173, 144);
+            this.uiAvatar4.Style = Sunny.UI.UIStyle.Custom;
+            this.uiAvatar4.TabIndex = 3;
+            this.uiAvatar4.Text = "uiAvatar4";
+            this.uiAvatar4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiAvatar3
+            // 
+            this.uiAvatar3.AvatarSize = 125;
+            this.uiAvatar3.FillColor = System.Drawing.Color.CornflowerBlue;
+            this.uiAvatar3.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiAvatar3.ForeColor = System.Drawing.Color.White;
+            this.uiAvatar3.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
+            this.uiAvatar3.Location = new System.Drawing.Point(325, 53);
+            this.uiAvatar3.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiAvatar3.Name = "uiAvatar3";
+            this.uiAvatar3.Size = new System.Drawing.Size(173, 144);
+            this.uiAvatar3.Style = Sunny.UI.UIStyle.Custom;
+            this.uiAvatar3.TabIndex = 2;
+            this.uiAvatar3.Text = "uiAvatar3";
+            this.uiAvatar3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiAvatar2
+            // 
+            this.uiAvatar2.AvatarSize = 125;
+            this.uiAvatar2.FillColor = System.Drawing.Color.CornflowerBlue;
+            this.uiAvatar2.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiAvatar2.ForeColor = System.Drawing.Color.White;
+            this.uiAvatar2.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
+            this.uiAvatar2.Location = new System.Drawing.Point(174, 53);
+            this.uiAvatar2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiAvatar2.Name = "uiAvatar2";
+            this.uiAvatar2.Size = new System.Drawing.Size(173, 144);
+            this.uiAvatar2.Style = Sunny.UI.UIStyle.Custom;
+            this.uiAvatar2.TabIndex = 1;
+            this.uiAvatar2.Text = "uiAvatar2";
+            this.uiAvatar2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiAvatar1
+            // 
+            this.uiAvatar1.AvatarSize = 125;
+            this.uiAvatar1.FillColor = System.Drawing.Color.CornflowerBlue;
+            this.uiAvatar1.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiAvatar1.ForeColor = System.Drawing.Color.White;
+            this.uiAvatar1.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
+            this.uiAvatar1.Location = new System.Drawing.Point(24, 53);
+            this.uiAvatar1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiAvatar1.Name = "uiAvatar1";
+            this.uiAvatar1.Size = new System.Drawing.Size(173, 144);
+            this.uiAvatar1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiAvatar1.TabIndex = 0;
+            this.uiAvatar1.Text = "uiAvatar1";
+            this.uiAvatar1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // FrmD02
             // 
             this.FrmD02.Location = new System.Drawing.Point(4, 30);
@@ -170,102 +266,6 @@
             this.FrmD07.TabIndex = 6;
             this.FrmD07.Text = "設定";
             this.FrmD07.UseVisualStyleBackColor = true;
-            // 
-            // uiAvatar1
-            // 
-            this.uiAvatar1.AvatarSize = 125;
-            this.uiAvatar1.FillColor = System.Drawing.Color.CornflowerBlue;
-            this.uiAvatar1.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.uiAvatar1.ForeColor = System.Drawing.Color.White;
-            this.uiAvatar1.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
-            this.uiAvatar1.Location = new System.Drawing.Point(24, 53);
-            this.uiAvatar1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiAvatar1.Name = "uiAvatar1";
-            this.uiAvatar1.Size = new System.Drawing.Size(173, 144);
-            this.uiAvatar1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiAvatar1.TabIndex = 0;
-            this.uiAvatar1.Text = "uiAvatar1";
-            this.uiAvatar1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiAvatar2
-            // 
-            this.uiAvatar2.AvatarSize = 125;
-            this.uiAvatar2.FillColor = System.Drawing.Color.CornflowerBlue;
-            this.uiAvatar2.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.uiAvatar2.ForeColor = System.Drawing.Color.White;
-            this.uiAvatar2.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
-            this.uiAvatar2.Location = new System.Drawing.Point(174, 53);
-            this.uiAvatar2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiAvatar2.Name = "uiAvatar2";
-            this.uiAvatar2.Size = new System.Drawing.Size(173, 144);
-            this.uiAvatar2.Style = Sunny.UI.UIStyle.Custom;
-            this.uiAvatar2.TabIndex = 1;
-            this.uiAvatar2.Text = "uiAvatar2";
-            this.uiAvatar2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiAvatar3
-            // 
-            this.uiAvatar3.AvatarSize = 125;
-            this.uiAvatar3.FillColor = System.Drawing.Color.CornflowerBlue;
-            this.uiAvatar3.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.uiAvatar3.ForeColor = System.Drawing.Color.White;
-            this.uiAvatar3.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
-            this.uiAvatar3.Location = new System.Drawing.Point(325, 53);
-            this.uiAvatar3.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiAvatar3.Name = "uiAvatar3";
-            this.uiAvatar3.Size = new System.Drawing.Size(173, 144);
-            this.uiAvatar3.Style = Sunny.UI.UIStyle.Custom;
-            this.uiAvatar3.TabIndex = 2;
-            this.uiAvatar3.Text = "uiAvatar3";
-            this.uiAvatar3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiAvatar4
-            // 
-            this.uiAvatar4.AvatarSize = 125;
-            this.uiAvatar4.FillColor = System.Drawing.Color.CornflowerBlue;
-            this.uiAvatar4.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.uiAvatar4.ForeColor = System.Drawing.Color.White;
-            this.uiAvatar4.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
-            this.uiAvatar4.Location = new System.Drawing.Point(476, 53);
-            this.uiAvatar4.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiAvatar4.Name = "uiAvatar4";
-            this.uiAvatar4.Size = new System.Drawing.Size(173, 144);
-            this.uiAvatar4.Style = Sunny.UI.UIStyle.Custom;
-            this.uiAvatar4.TabIndex = 3;
-            this.uiAvatar4.Text = "uiAvatar4";
-            this.uiAvatar4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiAvatar5
-            // 
-            this.uiAvatar5.AvatarSize = 125;
-            this.uiAvatar5.FillColor = System.Drawing.Color.CornflowerBlue;
-            this.uiAvatar5.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.uiAvatar5.ForeColor = System.Drawing.Color.White;
-            this.uiAvatar5.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
-            this.uiAvatar5.Location = new System.Drawing.Point(625, 53);
-            this.uiAvatar5.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiAvatar5.Name = "uiAvatar5";
-            this.uiAvatar5.Size = new System.Drawing.Size(173, 144);
-            this.uiAvatar5.Style = Sunny.UI.UIStyle.Custom;
-            this.uiAvatar5.TabIndex = 4;
-            this.uiAvatar5.Text = "uiAvatar5";
-            this.uiAvatar5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiAvatar6
-            // 
-            this.uiAvatar6.AvatarSize = 125;
-            this.uiAvatar6.FillColor = System.Drawing.Color.CornflowerBlue;
-            this.uiAvatar6.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.uiAvatar6.ForeColor = System.Drawing.Color.White;
-            this.uiAvatar6.Icon = Sunny.UI.UIAvatar.UIIcon.Text;
-            this.uiAvatar6.Location = new System.Drawing.Point(776, 53);
-            this.uiAvatar6.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiAvatar6.Name = "uiAvatar6";
-            this.uiAvatar6.Size = new System.Drawing.Size(173, 144);
-            this.uiAvatar6.Style = Sunny.UI.UIStyle.Custom;
-            this.uiAvatar6.TabIndex = 5;
-            this.uiAvatar6.Text = "uiAvatar6";
-            this.uiAvatar6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // UserControlApproval
             // 
