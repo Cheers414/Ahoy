@@ -53,7 +53,7 @@ namespace ahoy
 
         public static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            MessageBox.Show("觸發預期外錯誤", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"觸發預期外錯誤:{e.ToString()}", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
     }
