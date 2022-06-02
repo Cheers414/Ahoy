@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <Compile Include="Account.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
     </Compile>
@@ -95,6 +96,17 @@
     </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
+=======
+    <Compile Include="ErpDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErpDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ErpDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErpDBDataSet1.xsd</DependentUpon>
+>>>>>>> Stashed changes
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -115,8 +127,15 @@
       <DependentUpon>FormUnitTest.cs</DependentUpon>
     </Compile>
     <Compile Include="globalVariable.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Permission.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
+=======
+    <Compile Include="MyDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyDBDataSet.xsd</DependentUpon>
+>>>>>>> Stashed changes
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,12 +224,47 @@
     <EmbeddedResource Include="UserControlShift.resx">
       <DependentUpon>UserControlShift.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< Updated upstream
     <EntityDeploy Include="ahoyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ahoyModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="ahoyModel.edmx.diagram">
       <DependentUpon>ahoyModel.edmx</DependentUpon>
+=======
+    <None Include="ErpDBDataSet.xsc">
+      <DependentUpon>ErpDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ErpDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ErpDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ErpDBDataSet.xss">
+      <DependentUpon>ErpDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ErpDBDataSet1.xsc">
+      <DependentUpon>ErpDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ErpDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ErpDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ErpDBDataSet1.xss">
+      <DependentUpon>ErpDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="MyDBDataSet.xsc">
+      <DependentUpon>MyDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MyDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MyDBDataSet.xss">
+      <DependentUpon>MyDBDataSet.xsd</DependentUpon>
+>>>>>>> Stashed changes
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
