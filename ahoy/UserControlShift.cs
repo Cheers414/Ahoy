@@ -69,5 +69,10 @@ namespace ahoy
             }); });
             dgv1.DataSource = dtShift;
         }
+
+        private void shiftTabpage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
