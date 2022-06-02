@@ -54,20 +54,20 @@ namespace ahoy
 
         private void dtpShiftDatetime_ValueChanged(object sender, EventArgs e)
         {
-            //var storeDatetime = ace;
-            //&& x.attendanceStartDateTime == dtpShiftDatetime.Value
-            //if (storeDatetime == null)
-            //{
-            //    MessageBox.Show("找不到", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-            
-            DataTable dtShiftType = new DataTable();
-            foreach (var i in ace.ShiftRule.ToList())
+            var shiftAttendance = ace.Attendance.ToList().Where(x => x.attendanceStartDateTime.Date == dtpShiftDatetime.Value.Date&&x.Store == cbStore.SelectedItem).ToList();
+            if (shiftAttendance == null)
             {
-                dtShiftType.Rows.Add(i);
+                MessageBox.Show("找不到資料", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            
+            DataTable dtShift = new DataTable("dtShift");
+            dtShift.Columns.Add("ID");
+            dtShift.Columns.Add("員工姓名");
+            dtShift.Columns.Add("班別");
+            shiftAttendance.ForEach(x => { dtShift.Rows.Add(new object[] { 
+            x.AttendanceEmployeeID,x.Employee.employeeName,x.ShiftRule.shiftRuleName
+            }); });
+            dgv1.DataSource = dtShift;
         }
     }
 }
