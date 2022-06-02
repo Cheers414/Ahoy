@@ -22,7 +22,7 @@ namespace ahoy
     
         public int VacationTypeID { get; set; }
         public string vacationTypeName { get; set; }
-        public string notice { get; set; }
+        public Nullable<int> vacationLimit { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VacationRecord> VacationRecord { get; set; }

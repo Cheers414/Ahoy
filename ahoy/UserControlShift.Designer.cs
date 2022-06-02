@@ -78,6 +78,7 @@
             this.shiftTabpage.TabIndex = 0;
             this.shiftTabpage.Text = "排班";
             this.shiftTabpage.UseVisualStyleBackColor = true;
+            this.shiftTabpage.Click += new System.EventHandler(this.shiftTabpage_Click);
             // 
             // dgv1
             // 

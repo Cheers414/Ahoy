@@ -124,7 +124,7 @@
           </Key>
           <Property Name="VacationTypeID" Type="int" Nullable="false" />
           <Property Name="vacationTypeName" Type="nvarchar" MaxLength="63" Nullable="false" />
-          <Property Name="notice" Type="nvarchar" MaxLength="127" />
+          <Property Name="vacationLimit" Type="int" />
         </EntityType>
         <Association Name="FK_Account_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
@@ -491,8 +491,8 @@
           </Key>
           <Property Name="VacationTypeID" Type="Int32" Nullable="false" />
           <Property Name="vacationTypeName" Type="String" MaxLength="63" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="notice" Type="String" MaxLength="127" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="VacationRecord" Relationship="Self.FK_VacationRecord_VacationType" FromRole="VacationType" ToRole="VacationRecord" />
+          <Property Name="vacationLimit" Type="Int32" />
         </EntityType>
         <Association Name="FK_Account_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
@@ -858,9 +858,9 @@
           <EntitySetMapping Name="VacationType">
             <EntityTypeMapping TypeName="ahoyCorpModel.VacationType">
               <MappingFragment StoreEntitySet="VacationType">
+                <ScalarProperty Name="vacationLimit" ColumnName="vacationLimit" />
                 <ScalarProperty Name="VacationTypeID" ColumnName="VacationTypeID" />
                 <ScalarProperty Name="vacationTypeName" ColumnName="vacationTypeName" />
-                <ScalarProperty Name="notice" ColumnName="notice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

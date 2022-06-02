@@ -15,10 +15,10 @@ namespace ahoy
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class ahoyCorpEntities : DbContext
+    public partial class ahoyCorpEntities1 : DbContext
     {
-        public ahoyCorpEntities()
-            : base("name=ahoyCorpEntities")
+        public ahoyCorpEntities1()
+            : base("name=ahoyCorpEntities1")
         {
         }
     
