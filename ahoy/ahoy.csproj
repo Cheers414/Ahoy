@@ -66,6 +66,11 @@
     <Compile Include="Account.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ahoyCorpDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ahoyCorpDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ahoyModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -130,9 +135,6 @@
       <DependentUpon>ahoyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Store.cs">
-      <DependentUpon>ahoyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserControlApproval.cs">
@@ -209,6 +211,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ahoyModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ahoyCorpDataSet.xsc">
+      <DependentUpon>ahoyCorpDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ahoyCorpDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ahoyCorpDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ahoyCorpDataSet.xss">
+      <DependentUpon>ahoyCorpDataSet.xsd</DependentUpon>
+    </None>
     <None Include="ahoyModel.edmx.diagram">
       <DependentUpon>ahoyModel.edmx</DependentUpon>
     </None>
