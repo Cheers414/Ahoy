@@ -16,7 +16,7 @@ namespace ahoy
         {
             InitializeComponent();
         }
-        ahoyCorpEntities ace = new ahoyCorpEntities();
+        ahoyCorpEntities1 ace = new ahoyCorpEntities1();
         public new void BringToFront()//此處為元件初始化
         {
             dtpShiftDatetime.MaxDate = DateTime.Now;
