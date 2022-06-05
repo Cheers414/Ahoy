@@ -59,7 +59,7 @@
           </Key>
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="mangerEmployeeIdID" Type="int" />
-          <Property Name="employeeName" Type="nchar" MaxLength="31" Nullable="false" />
+          <Property Name="employeeName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="birthday" Type="date" Nullable="false" />
           <Property Name="adress" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="phone" Type="nvarchar" MaxLength="31" Nullable="false" />
@@ -107,6 +107,7 @@
           <Property Name="vacationReason" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="attachedFilesName" Type="nvarchar" MaxLength="127" />
           <Property Name="ApplyStatusID" Type="int" Nullable="false" />
+          <Property Name="ApplyChanged" Type="datetime" />
         </EntityType>
         <EntityType Name="VacationType">
           <Key>
@@ -371,7 +372,7 @@
           </Key>
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
           <Property Name="mangerEmployeeIdID" Type="Int32" />
-          <Property Name="employeeName" Type="String" MaxLength="31" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="employeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="adress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="phone" Type="String" MaxLength="31" FixedLength="false" Unicode="true" Nullable="false" />
@@ -432,6 +433,7 @@
           <NavigationProperty Name="ApplyStatus" Relationship="Self.FK_VacationRecord_ApplyStatus" FromRole="VacationRecord" ToRole="ApplyStatus" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_VacationRecord_Employee" FromRole="VacationRecord" ToRole="Employee" />
           <NavigationProperty Name="VacationType" Relationship="Self.FK_VacationRecord_VacationType" FromRole="VacationRecord" ToRole="VacationType" />
+          <Property Name="ApplyChanged" Type="DateTime" Nullable="true" />
         </EntityType>
         <EntityType Name="VacationType">
           <Key>
@@ -779,6 +781,7 @@
           <EntitySetMapping Name="VacationRecord">
             <EntityTypeMapping TypeName="ahoyCorpModel.VacationRecord">
               <MappingFragment StoreEntitySet="VacationRecord">
+                <ScalarProperty Name="ApplyChanged" ColumnName="ApplyChanged" />
                 <ScalarProperty Name="VacationRecordID" ColumnName="VacationRecordID" />
                 <ScalarProperty Name="VacationTypeID" ColumnName="VacationTypeID" />
                 <ScalarProperty Name="DepartmentalID" ColumnName="DepartmentalID" />

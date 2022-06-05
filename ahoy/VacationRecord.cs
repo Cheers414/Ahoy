@@ -36,6 +36,8 @@ public partial class VacationRecord
 
     public int ApplyStatusID { get; set; }
 
+    public Nullable<System.DateTime> ApplyChanged { get; set; }
+
 
 
     public virtual ApplyStatus ApplyStatus { get; set; }
