@@ -17,7 +17,7 @@ namespace ahoy
         {
             InitializeComponent();
         }
-        ahoyCorpEntities1 ace = new ahoyCorpEntities1();
+        ahoyCorpEntities ace = new ahoyCorpEntities();
         private void UserControlApproval_Load(object sender, EventArgs e)
         {
             

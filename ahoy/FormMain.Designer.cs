@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
-            this.picButtonGoToUser = new System.Windows.Forms.PictureBox();
             this.panelStartbar = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panelWorkspace = new System.Windows.Forms.Panel();
@@ -60,7 +59,7 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picButtonGoToUser)).BeginInit();
+            this.btnGoToUserProfiles = new System.Windows.Forms.Button();
             this.panelStartbar.SuspendLayout();
             this.panelWorkspace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackGround)).BeginInit();
@@ -78,23 +77,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
-            // picButtonGoToUser
-            // 
-            this.picButtonGoToUser.BackColor = System.Drawing.Color.White;
-            this.picButtonGoToUser.Location = new System.Drawing.Point(1011, 5);
-            this.picButtonGoToUser.Name = "picButtonGoToUser";
-            this.picButtonGoToUser.Padding = new System.Windows.Forms.Padding(5);
-            this.picButtonGoToUser.Size = new System.Drawing.Size(50, 50);
-            this.picButtonGoToUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picButtonGoToUser.TabIndex = 1;
-            this.picButtonGoToUser.TabStop = false;
-            this.picButtonGoToUser.Click += new System.EventHandler(this.picButtonGoToUser_Click);
-            // 
             // panelStartbar
             // 
             this.panelStartbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.panelStartbar.Controls.Add(this.btnGoToUserProfiles);
             this.panelStartbar.Controls.Add(this.btnLogout);
-            this.panelStartbar.Controls.Add(this.picButtonGoToUser);
             this.panelStartbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStartbar.Location = new System.Drawing.Point(200, 0);
             this.panelStartbar.Name = "panelStartbar";
@@ -107,12 +94,13 @@
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnLogout.Location = new System.Drawing.Point(922, 16);
+            this.btnLogout.Location = new System.Drawing.Point(885, 16);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(83, 30);
             this.btnLogout.TabIndex = 3;
             this.btnLogout.Text = "登出";
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // panelWorkspace
             // 
@@ -203,6 +191,7 @@
             this.btnSalary.TabIndex = 2;
             this.btnSalary.Text = "薪    資";
             this.btnSalary.UseVisualStyleBackColor = false;
+            this.btnSalary.Click += new System.EventHandler(this.btnSalary_Click);
             // 
             // pictureBox2
             // 
@@ -214,6 +203,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.btnSalary_Click);
             // 
             // panel9
             // 
@@ -222,6 +212,7 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(30, 40);
             this.panel9.TabIndex = 7;
+            this.panel9.Click += new System.EventHandler(this.btnSalary_Click);
             // 
             // panel3
             // 
@@ -250,6 +241,7 @@
             this.btnShift.TabIndex = 2;
             this.btnShift.Text = "排    班";
             this.btnShift.UseVisualStyleBackColor = false;
+            this.btnShift.Click += new System.EventHandler(this.btnShift_Click);
             // 
             // pictureBox3
             // 
@@ -261,6 +253,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.btnShift_Click);
             // 
             // panel8
             // 
@@ -269,6 +262,7 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(30, 40);
             this.panel8.TabIndex = 7;
+            this.panel8.Click += new System.EventHandler(this.btnShift_Click);
             // 
             // panel4
             // 
@@ -296,6 +290,7 @@
             this.btnApproval.TabIndex = 2;
             this.btnApproval.Text = "簽    核";
             this.btnApproval.UseVisualStyleBackColor = false;
+            this.btnApproval.Click += new System.EventHandler(this.btnApproval_Click);
             // 
             // pictureBox4
             // 
@@ -307,6 +302,7 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 3;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.btnApproval_Click);
             // 
             // panel7
             // 
@@ -315,6 +311,7 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(30, 40);
             this.panel7.TabIndex = 7;
+            this.panel7.Click += new System.EventHandler(this.btnApproval_Click);
             // 
             // panel5
             // 
@@ -342,6 +339,7 @@
             this.btnAttendance.TabIndex = 2;
             this.btnAttendance.Text = "差    勤";
             this.btnAttendance.UseVisualStyleBackColor = false;
+            this.btnAttendance.Click += new System.EventHandler(this.btnAttendance_Click);
             // 
             // pictureBox6
             // 
@@ -353,6 +351,7 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 7;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.btnAttendance_Click);
             // 
             // panel6
             // 
@@ -361,6 +360,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(30, 40);
             this.panel6.TabIndex = 6;
+            this.panel6.Click += new System.EventHandler(this.btnAttendance_Click);
             // 
             // panelMenu
             // 
@@ -429,6 +429,19 @@
             this.pictureBoxLogo.TabIndex = 0;
             this.pictureBoxLogo.TabStop = false;
             // 
+            // btnGoToUserProfiles
+            // 
+            this.btnGoToUserProfiles.BackColor = System.Drawing.Color.White;
+            this.btnGoToUserProfiles.FlatAppearance.BorderSize = 0;
+            this.btnGoToUserProfiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGoToUserProfiles.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnGoToUserProfiles.Location = new System.Drawing.Point(974, 16);
+            this.btnGoToUserProfiles.Name = "btnGoToUserProfiles";
+            this.btnGoToUserProfiles.Size = new System.Drawing.Size(83, 30);
+            this.btnGoToUserProfiles.TabIndex = 4;
+            this.btnGoToUserProfiles.Text = "個人頁面";
+            this.btnGoToUserProfiles.UseVisualStyleBackColor = false;
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -449,7 +462,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "寶忠公司員工管理系統";
             this.Load += new System.EventHandler(this.formMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picButtonGoToUser)).EndInit();
             this.panelStartbar.ResumeLayout(false);
             this.panelWorkspace.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackGround)).EndInit();
@@ -470,7 +482,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox picButtonGoToUser;
         private System.Windows.Forms.Panel panelStartbar;
         private System.Windows.Forms.Panel panelWorkspace;
         private System.Windows.Forms.Button btnLogout;
@@ -501,6 +512,7 @@
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.PictureBox pictureBoxBackGround;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
+        private System.Windows.Forms.Button btnGoToUserProfiles;
     }
 }
 

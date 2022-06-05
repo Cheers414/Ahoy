@@ -9,6 +9,6 @@ namespace ahoy
     public  class globalVariable
     {
         // TO DO 保留目前的使用者於資料庫中的對應資料
-        public static object user;
+        public static Account user;
     }
 }

@@ -28,5 +28,39 @@ namespace ahoy
         {
 
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            if (new formLogin().ShowDialog() == DialogResult.Cancel)
+            {
+                Close();
+            }
+            formMain_Load(null,null);
+        }
+
+        private void btnHR_Click(object sender, EventArgs e)
+        {
+            //UserControlHR.BringToFront();
+        }
+
+        private void btnSalary_Click(object sender, EventArgs e)
+        {
+            //UserControlSalary.BringToFront();
+        }
+
+        private void btnShift_Click(object sender, EventArgs e)
+        {
+            //UserControlShift.BringToFront();
+        }
+
+        private void btnApproval_Click(object sender, EventArgs e)
+        {
+            //UserControlApproval.BringToFront();
+        }
+
+        private void btnAttendance_Click(object sender, EventArgs e)
+        {
+            //UserControlAttendance.BringToFront();
+        }
     }
 }
