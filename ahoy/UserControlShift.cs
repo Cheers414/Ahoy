@@ -20,13 +20,11 @@ namespace ahoy
         public new void BringToFront()//此處為元件初始化
         {
             dtpShiftDatetime.MaxDate = DateTime.Now;
-            
-            //cbShiftType.DataSource = ace.ShiftRule.ToList();
-            //cbShiftEmpolyee.DataSource = ace.Employee.ToList();
+
+            cbShiftRuleType.DataSource = ace.ShiftRule.ToList();
             cbStore.DataSource = ace.Store.ToList();
             cbStore.DisplayMember = "storeName";
-            //cbShiftType.DisplayMember = "shiftRuleName";
-            //cbShiftEmpolyee.DisplayMember = "employeeName";
+            cbShiftRuleType.DisplayMember = "shiftRuleName";
             base.BringToFront();
         }
 
@@ -64,10 +62,11 @@ namespace ahoy
             dtShift.Columns.Add("ID");
             dtShift.Columns.Add("員工姓名");
             dtShift.Columns.Add("班別");
-            shiftAttendance.ForEach(x => { dtShift.Rows.Add(new object[] { 
+            shiftAttendance.ForEach(x => {
+                dtShift.Rows.Add(new object[] { 
             x.AttendanceEmployeeID,x.Employee.employeeName,x.ShiftRule.shiftRuleName
             }); });
-            dgv1.DataSource = dtShift;
+            dgvShift.DataSource = dtShift; //.AsEnumerable().GroupBy(x => x.Field<int>("ID")).  Select(y=>y.First()).CopyToDataTable();
         }
 
         private void shiftTabpage_Click(object sender, EventArgs e)

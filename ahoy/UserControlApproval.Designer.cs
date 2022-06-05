@@ -116,7 +116,7 @@
             this.uiTabControl1.Controls.Add(this.VactionApply);
             this.uiTabControl1.Controls.Add(this.tabPage4);
             this.uiTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiTabControl1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 40);
             this.uiTabControl1.Location = new System.Drawing.Point(0, 0);
             this.uiTabControl1.MainPage = "";
@@ -153,7 +153,7 @@
             // btnKeyWord
             // 
             this.btnKeyWord.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnKeyWord.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnKeyWord.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnKeyWord.Location = new System.Drawing.Point(976, 280);
             this.btnKeyWord.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnKeyWord.Name = "btnKeyWord";
@@ -165,14 +165,15 @@
             // 
             // txtkeyWord
             // 
+            this.txtkeyWord.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtkeyWord.Location = new System.Drawing.Point(834, 278);
             this.txtkeyWord.Name = "txtkeyWord";
-            this.txtkeyWord.Size = new System.Drawing.Size(132, 25);
+            this.txtkeyWord.Size = new System.Drawing.Size(132, 29);
             this.txtkeyWord.TabIndex = 9;
             // 
             // uiMarkLabel2
             // 
-            this.uiMarkLabel2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.uiMarkLabel2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.uiMarkLabel2.Location = new System.Drawing.Point(30, 277);
             this.uiMarkLabel2.Name = "uiMarkLabel2";
             this.uiMarkLabel2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -184,7 +185,7 @@
             // 
             // uiMarkLabel1
             // 
-            this.uiMarkLabel1.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.uiMarkLabel1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.uiMarkLabel1.Location = new System.Drawing.Point(30, 6);
             this.uiMarkLabel1.Name = "uiMarkLabel1";
             this.uiMarkLabel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -215,6 +216,7 @@
             this.LabHolidayBox.Controls.Add(this.uiLabel3);
             this.LabHolidayBox.Controls.Add(this.uiLabel2);
             this.LabHolidayBox.Controls.Add(this.uiLabel1);
+            this.LabHolidayBox.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.LabHolidayBox.Location = new System.Drawing.Point(30, 32);
             this.LabHolidayBox.Name = "LabHolidayBox";
             this.LabHolidayBox.Size = new System.Drawing.Size(998, 226);
@@ -360,7 +362,7 @@
             this.LabHolidayShow.ForeColor = System.Drawing.Color.Gray;
             this.LabHolidayShow.Location = new System.Drawing.Point(942, 195);
             this.LabHolidayShow.Name = "LabHolidayShow";
-            this.LabHolidayShow.Size = new System.Drawing.Size(41, 20);
+            this.LabHolidayShow.Size = new System.Drawing.Size(45, 20);
             this.LabHolidayShow.TabIndex = 7;
             this.LabHolidayShow.Text = "展 開";
             this.LabHolidayShow.Click += new System.EventHandler(this.LabHolidayShow_Click);
@@ -497,6 +499,7 @@
             this.columnHeader7,
             this.columnHeader8,
             this.columnHeader9});
+            this.listView1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(30, 309);
             this.listView1.Name = "listView1";
@@ -643,7 +646,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(90, 308);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 21);
+            this.label6.Size = new System.Drawing.Size(41, 20);
             this.label6.TabIndex = 11;
             this.label6.Text = "事由";
             // 
@@ -652,7 +655,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(368, 147);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 21);
+            this.label5.Size = new System.Drawing.Size(106, 20);
             this.label5.TabIndex = 10;
             this.label5.Text = "日期/時間(迄)";
             // 
@@ -661,7 +664,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(368, 81);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(107, 21);
+            this.label4.Size = new System.Drawing.Size(106, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "日期/時間(起)";
             // 
@@ -670,7 +673,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(90, 233);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 21);
+            this.label3.Size = new System.Drawing.Size(41, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "假別";
             // 
@@ -679,7 +682,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(74, 158);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 21);
+            this.label2.Size = new System.Drawing.Size(57, 20);
             this.label2.TabIndex = 7;
             this.label2.Text = "申請人";
             // 
@@ -688,7 +691,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(90, 83);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 21);
+            this.label1.Size = new System.Drawing.Size(41, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "單位";
             // 
@@ -725,7 +728,7 @@
             "颱風假"});
             this.cmbVacationType.Location = new System.Drawing.Point(173, 225);
             this.cmbVacationType.Name = "cmbVacationType";
-            this.cmbVacationType.Size = new System.Drawing.Size(150, 29);
+            this.cmbVacationType.Size = new System.Drawing.Size(150, 28);
             this.cmbVacationType.TabIndex = 3;
             this.cmbVacationType.Text = "事假";
             // 

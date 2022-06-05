@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
             this.panelStartbar = new System.Windows.Forms.Panel();
+            this.btnGoToUserProfiles = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panelWorkspace = new System.Windows.Forms.Panel();
             this.pictureBoxBackGround = new System.Windows.Forms.PictureBox();
@@ -59,7 +60,6 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.btnGoToUserProfiles = new System.Windows.Forms.Button();
             this.panelStartbar.SuspendLayout();
             this.panelWorkspace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackGround)).BeginInit();
@@ -87,6 +87,19 @@
             this.panelStartbar.Name = "panelStartbar";
             this.panelStartbar.Size = new System.Drawing.Size(1064, 61);
             this.panelStartbar.TabIndex = 2;
+            // 
+            // btnGoToUserProfiles
+            // 
+            this.btnGoToUserProfiles.BackColor = System.Drawing.Color.White;
+            this.btnGoToUserProfiles.FlatAppearance.BorderSize = 0;
+            this.btnGoToUserProfiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGoToUserProfiles.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnGoToUserProfiles.Location = new System.Drawing.Point(974, 16);
+            this.btnGoToUserProfiles.Name = "btnGoToUserProfiles";
+            this.btnGoToUserProfiles.Size = new System.Drawing.Size(83, 30);
+            this.btnGoToUserProfiles.TabIndex = 4;
+            this.btnGoToUserProfiles.Text = "個人頁面";
+            this.btnGoToUserProfiles.UseVisualStyleBackColor = false;
             // 
             // btnLogout
             // 
@@ -428,19 +441,6 @@
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLogo.TabIndex = 0;
             this.pictureBoxLogo.TabStop = false;
-            // 
-            // btnGoToUserProfiles
-            // 
-            this.btnGoToUserProfiles.BackColor = System.Drawing.Color.White;
-            this.btnGoToUserProfiles.FlatAppearance.BorderSize = 0;
-            this.btnGoToUserProfiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGoToUserProfiles.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnGoToUserProfiles.Location = new System.Drawing.Point(974, 16);
-            this.btnGoToUserProfiles.Name = "btnGoToUserProfiles";
-            this.btnGoToUserProfiles.Size = new System.Drawing.Size(83, 30);
-            this.btnGoToUserProfiles.TabIndex = 4;
-            this.btnGoToUserProfiles.Text = "個人頁面";
-            this.btnGoToUserProfiles.UseVisualStyleBackColor = false;
             // 
             // formMain
             // 

@@ -22,5 +22,15 @@ namespace ahoy
 
             base.BringToFront();
         }
+
+        private void UserControlAttendance_Load(object sender, EventArgs e)
+        {
+            LabNowTime.Text = "目前時間為:"+DateTime.Now;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
