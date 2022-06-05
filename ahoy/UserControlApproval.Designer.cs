@@ -81,11 +81,33 @@
             this.txtApplicantEmployeeID = new System.Windows.Forms.TextBox();
             this.txtDepartmentalID = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.cmbClass = new System.Windows.Forms.ComboBox();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnViwe = new Sunny.UI.UIButton();
+            this.btnAppKeyWord = new Sunny.UI.UISymbolButton();
+            this.txtEmpName = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.uiMarkLabel4 = new Sunny.UI.UIMarkLabel();
+            this.txtEmpID = new System.Windows.Forms.TextBox();
             this.uiTabControl1.SuspendLayout();
             this.VactionInfo.SuspendLayout();
             this.LabHolidayBox.SuspendLayout();
             this.VactionApply.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // uiTabControl1
@@ -93,7 +115,6 @@
             this.uiTabControl1.Controls.Add(this.VactionInfo);
             this.uiTabControl1.Controls.Add(this.VactionApply);
             this.uiTabControl1.Controls.Add(this.tabPage4);
-            this.uiTabControl1.Controls.Add(this.tabPage5);
             this.uiTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 40);
@@ -128,7 +149,6 @@
             this.VactionInfo.TabIndex = 0;
             this.VactionInfo.Text = "請假資訊";
             this.VactionInfo.UseVisualStyleBackColor = true;
-            this.VactionInfo.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // btnKeyWord
             // 
@@ -484,7 +504,6 @@
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -604,6 +623,7 @@
             this.uiButton2.TabIndex = 14;
             this.uiButton2.Text = "取 消";
             this.uiButton2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiButton2.Click += new System.EventHandler(this.btnCancel);
             // 
             // btnApplyFormOk
             // 
@@ -616,7 +636,7 @@
             this.btnApplyFormOk.TabIndex = 13;
             this.btnApplyFormOk.Text = "確 認";
             this.btnApplyFormOk.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.btnApplyFormOk.Click += new System.EventHandler(this.UiButton1_Click);
+            this.btnApplyFormOk.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // label6
             // 
@@ -727,6 +747,18 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.cmbStatus);
+            this.tabPage4.Controls.Add(this.cmbClass);
+            this.tabPage4.Controls.Add(this.listView2);
+            this.tabPage4.Controls.Add(this.btnViwe);
+            this.tabPage4.Controls.Add(this.btnAppKeyWord);
+            this.tabPage4.Controls.Add(this.txtEmpName);
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Controls.Add(this.label9);
+            this.tabPage4.Controls.Add(this.label8);
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Controls.Add(this.uiMarkLabel4);
+            this.tabPage4.Controls.Add(this.txtEmpID);
             this.tabPage4.Location = new System.Drawing.Point(0, 40);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1064, 580);
@@ -734,14 +766,190 @@
             this.tabPage4.Text = "待審核/紀錄";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // tabPage5
+            // cmbStatus
             // 
-            this.tabPage5.Location = new System.Drawing.Point(0, 40);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1064, 580);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "設定";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "已批准",
+            "被駁回",
+            "待審核",
+            "已撤銷"});
+            this.cmbStatus.Location = new System.Drawing.Point(507, 139);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(145, 29);
+            this.cmbStatus.TabIndex = 37;
+            // 
+            // cmbClass
+            // 
+            this.cmbClass.FormattingEnabled = true;
+            this.cmbClass.Items.AddRange(new object[] {
+            "公關部",
+            "工程部",
+            "管理部",
+            "營業部"});
+            this.cmbClass.Location = new System.Drawing.Point(507, 79);
+            this.cmbClass.Name = "cmbClass";
+            this.cmbClass.Size = new System.Drawing.Size(145, 29);
+            this.cmbClass.TabIndex = 36;
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader15,
+            this.columnHeader16,
+            this.columnHeader17,
+            this.columnHeader18,
+            this.columnHeader19});
+            this.listView2.FullRowSelect = true;
+            this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(56, 193);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(956, 314);
+            this.listView2.TabIndex = 35;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "請假編號";
+            this.columnHeader10.Width = 112;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "請假類型";
+            this.columnHeader11.Width = 102;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "申請人";
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "事由";
+            this.columnHeader14.Width = 58;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "時間(起)";
+            this.columnHeader15.Width = 111;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "時間(迄)";
+            this.columnHeader16.Width = 74;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "簽核主管";
+            this.columnHeader17.Width = 100;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "狀態";
+            this.columnHeader18.Width = 79;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "簽核時間";
+            this.columnHeader19.Width = 101;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "部門";
+            // 
+            // btnViwe
+            // 
+            this.btnViwe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViwe.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnViwe.Location = new System.Drawing.Point(934, 527);
+            this.btnViwe.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnViwe.Name = "btnViwe";
+            this.btnViwe.Size = new System.Drawing.Size(78, 30);
+            this.btnViwe.TabIndex = 34;
+            this.btnViwe.Text = "檢 視";
+            this.btnViwe.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnViwe.Click += new System.EventHandler(this.btnViwe_Click);
+            // 
+            // btnAppKeyWord
+            // 
+            this.btnAppKeyWord.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAppKeyWord.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnAppKeyWord.Location = new System.Drawing.Point(753, 139);
+            this.btnAppKeyWord.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnAppKeyWord.Name = "btnAppKeyWord";
+            this.btnAppKeyWord.Size = new System.Drawing.Size(57, 29);
+            this.btnAppKeyWord.Symbol = 61442;
+            this.btnAppKeyWord.TabIndex = 33;
+            this.btnAppKeyWord.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnAppKeyWord.Click += new System.EventHandler(this.btnAppKeyWord_Click);
+            // 
+            // txtEmpName
+            // 
+            this.txtEmpName.Location = new System.Drawing.Point(190, 139);
+            this.txtEmpName.Name = "txtEmpName";
+            this.txtEmpName.Size = new System.Drawing.Size(145, 29);
+            this.txtEmpName.TabIndex = 30;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(396, 139);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(74, 21);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "審核狀態";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(428, 82);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 21);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "部門";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(82, 139);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 21);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "員工姓名";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(82, 77);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 21);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "員工編號";
+            // 
+            // uiMarkLabel4
+            // 
+            this.uiMarkLabel4.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.uiMarkLabel4.Location = new System.Drawing.Point(51, 34);
+            this.uiMarkLabel4.Name = "uiMarkLabel4";
+            this.uiMarkLabel4.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.uiMarkLabel4.Size = new System.Drawing.Size(185, 23);
+            this.uiMarkLabel4.TabIndex = 18;
+            this.uiMarkLabel4.Text = "審 核 申 請 記 錄";
+            this.uiMarkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiMarkLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // txtEmpID
+            // 
+            this.txtEmpID.Location = new System.Drawing.Point(190, 74);
+            this.txtEmpID.Name = "txtEmpID";
+            this.txtEmpID.Size = new System.Drawing.Size(145, 29);
+            this.txtEmpID.TabIndex = 0;
             // 
             // UserControlApproval
             // 
@@ -761,6 +969,8 @@
             this.LabHolidayBox.PerformLayout();
             this.VactionApply.ResumeLayout(false);
             this.VactionApply.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -789,7 +999,6 @@
         private Sunny.UI.UIAvatar LabHolidayValue2;
         private Sunny.UI.UIAvatar LabHolidayValue1;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label LabHolidayShow;
         private System.Windows.Forms.TextBox txtApplicantEmployeeID;
         private System.Windows.Forms.TextBox txtDepartmentalID;
@@ -822,5 +1031,27 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private Sunny.UI.UIMarkLabel uiMarkLabel4;
+        private System.Windows.Forms.TextBox txtEmpID;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtEmpName;
+        private Sunny.UI.UISymbolButton btnAppKeyWord;
+        private Sunny.UI.UIButton btnViwe;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ColumnHeader columnHeader17;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ComboBox cmbStatus;
+        private System.Windows.Forms.ComboBox cmbClass;
     }
 }

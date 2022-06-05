@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="ahoyCorpModel.Permission" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ahoyCorpModel.ShiftRule" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ahoyCorpModel.Store" Width="1.5" PointX="8.25" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ahoyCorpModel.VacationRecord" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ahoyCorpModel.VacationRecord" Width="2.875" PointX="7.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ahoyCorpModel.VacationType" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
         <AssociationConnector Association="ahoyCorpModel.FK_Account_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="ahoyCorpModel.FK_VacationRecord_ApplyStatus" ManuallyRouted="false" />

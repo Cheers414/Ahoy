@@ -10,9 +10,9 @@
             <PropertyRef Name="AccountID" />
           </Key>
           <Property Name="AccountID" Type="int" Nullable="false" />
-          <Property Name="account" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="password" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="gmail" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="account" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="gmail" Type="nvarchar" MaxLength="50" />
           <Property Name="EmployeeID" Type="int" />
         </EntityType>
         <EntityType Name="ApplyStatus">
@@ -107,7 +107,7 @@
           <Property Name="vacationReason" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="attachedFilesName" Type="nvarchar" MaxLength="127" />
           <Property Name="ApplyStatusID" Type="int" Nullable="false" />
-          <Property Name="ApplyChanged" Type="datetime" />
+          <Property Name="ApplyChangedDatetime" Type="datetime" />
         </EntityType>
         <EntityType Name="VacationType">
           <Key>
@@ -315,9 +315,9 @@
             <PropertyRef Name="AccountID" />
           </Key>
           <Property Name="AccountID" Type="Int32" Nullable="false" />
-          <Property Name="account" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="gmail" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EmployeeID" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Account_Employee" FromRole="Account" ToRole="Employee" />
         </EntityType>
@@ -433,7 +433,7 @@
           <NavigationProperty Name="ApplyStatus" Relationship="Self.FK_VacationRecord_ApplyStatus" FromRole="VacationRecord" ToRole="ApplyStatus" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_VacationRecord_Employee" FromRole="VacationRecord" ToRole="Employee" />
           <NavigationProperty Name="VacationType" Relationship="Self.FK_VacationRecord_VacationType" FromRole="VacationRecord" ToRole="VacationType" />
-          <Property Name="ApplyChanged" Type="DateTime" Nullable="true" />
+          <Property Name="ApplyChangedDatetime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="VacationType">
           <Key>
@@ -781,7 +781,7 @@
           <EntitySetMapping Name="VacationRecord">
             <EntityTypeMapping TypeName="ahoyCorpModel.VacationRecord">
               <MappingFragment StoreEntitySet="VacationRecord">
-                <ScalarProperty Name="ApplyChanged" ColumnName="ApplyChanged" />
+                <ScalarProperty Name="ApplyChangedDatetime" ColumnName="ApplyChangedDatetime" />
                 <ScalarProperty Name="VacationRecordID" ColumnName="VacationRecordID" />
                 <ScalarProperty Name="VacationTypeID" ColumnName="VacationTypeID" />
                 <ScalarProperty Name="DepartmentalID" ColumnName="DepartmentalID" />

@@ -96,6 +96,17 @@
     <Compile Include="Employee.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FormApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormApproval.Designer.cs">
+      <DependentUpon>FormApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHolidaytotal1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormHolidaytotal.resx</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,12 +161,6 @@
     <Compile Include="UserControlHR.Designer.cs">
       <DependentUpon>UserControlHR.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlProfiles.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlProfiles.Designer.cs">
-      <DependentUpon>UserControlProfiles.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControlSalary.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,11 +173,11 @@
     <Compile Include="UserControlShift.Designer.cs">
       <DependentUpon>UserControlShift.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserHolidaytotal.cs">
+    <Compile Include="FormHolidaytotal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserHolidaytotal.Designer.cs">
-      <DependentUpon>UserHolidaytotal.cs</DependentUpon>
+    <Compile Include="FormHolidaytotal.Designer.cs">
+      <DependentUpon>FormHolidaytotal.cs</DependentUpon>
     </Compile>
     <Compile Include="VacationRecord.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
@@ -180,6 +185,9 @@
     <Compile Include="VacationType.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormApproval.resx">
+      <DependentUpon>FormApproval.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,17 +216,17 @@
     <EmbeddedResource Include="UserControlHR.resx">
       <DependentUpon>UserControlHR.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlProfiles.resx">
-      <DependentUpon>UserControlProfiles.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControlSalary.resx">
       <DependentUpon>UserControlSalary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlShift.resx">
       <DependentUpon>UserControlShift.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserHolidaytotal.resx">
-      <DependentUpon>UserHolidaytotal.cs</DependentUpon>
+    <EmbeddedResource Include="FormHolidaytotal.resx">
+      <DependentUpon>FormHolidaytotal.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormHolidaytotal1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EntityDeploy Include="ahoyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
