@@ -16,44 +16,42 @@ namespace ahoy
         {
             InitializeComponent();
         }
-        ahoyCorpEntities ace= new ahoyCorpEntities() ;
+        ahoyCorpEntities ace = new ahoyCorpEntities();
         private void btnLogin_Click(object sender, EventArgs e)
         {
 #if DEBUG
-            // TO DO: 接上資料庫的Account
-            string account = "",
-                password = "",
-                errorMsg = "";
+            // TO DO: 接上資料庫的Account : done
+            var UserAccount = ace.Account.ToList().SingleOrDefault(x => x.account == txtInputAccount.Text && x.password == txtInputPassword.Text);
 #else
-            string account = "__",
-            password = "__", 
-            errorMsg = "";
+            var UserAccount = ace.Account.ToList().SingleOrDefault(x => x.account == txtInputAccount.Text && x.password == txtInputPassword.Text);
 #endif
-            if (txtInputAccount.Text == account && txtInputPassword.Text == password)
+
+            if (UserAccount == null)
             {
-                MessageBox.Show("登入成功", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                MessageBox.Show("帳號或密碼有誤", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
-            {
-                if (txtInputAccount.Text != account)
-                {
-                    errorMsg += "帳號\n";
-                }
-                if (txtInputPassword.Text != password)
-                {
-                    errorMsg += "密碼\n";
-                }
-                MessageBox.Show(errorMsg + "存在錯誤", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            MessageBox.Show("登入成功", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult = DialogResult.OK;
+            globalVariable.user = UserAccount;
+            Close();
 
         }
 
         private void formLogin_Load(object sender, EventArgs e)
         {
+            globalVariable.user = null;
+            DialogResult = DialogResult.None;
             txtInputAccount.Text = "";
             txtInputPassword.Text = "";
+        }
+        public new void Close()
+        {
+            if (DialogResult == DialogResult.None)
+            {
+                DialogResult = DialogResult.Cancel;
+            }
+            base.Close();
         }
     }
 }

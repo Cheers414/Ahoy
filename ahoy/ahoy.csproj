@@ -150,6 +150,12 @@
     <Compile Include="UserControlHR.Designer.cs">
       <DependentUpon>UserControlHR.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlProfiles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlProfiles.Designer.cs">
+      <DependentUpon>UserControlProfiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlSalary.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlHR.resx">
       <DependentUpon>UserControlHR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlProfiles.resx">
+      <DependentUpon>UserControlProfiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSalary.resx">
       <DependentUpon>UserControlSalary.cs</DependentUpon>
