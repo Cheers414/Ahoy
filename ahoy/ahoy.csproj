@@ -66,11 +66,6 @@
     <Compile Include="Account.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ahoyCorpDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ahoyCorpDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ahoyModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -167,6 +162,12 @@
     <Compile Include="UserControlShift.Designer.cs">
       <DependentUpon>UserControlShift.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserHolidaytotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserHolidaytotal.Designer.cs">
+      <DependentUpon>UserHolidaytotal.cs</DependentUpon>
+    </Compile>
     <Compile Include="VacationRecord.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
     </Compile>
@@ -207,21 +208,13 @@
     <EmbeddedResource Include="UserControlShift.resx">
       <DependentUpon>UserControlShift.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserHolidaytotal.resx">
+      <DependentUpon>UserHolidaytotal.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="ahoyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ahoyModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ahoyCorpDataSet.xsc">
-      <DependentUpon>ahoyCorpDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ahoyCorpDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ahoyCorpDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ahoyCorpDataSet.xss">
-      <DependentUpon>ahoyCorpDataSet.xsd</DependentUpon>
-    </None>
     <None Include="ahoyModel.edmx.diagram">
       <DependentUpon>ahoyModel.edmx</DependentUpon>
     </None>

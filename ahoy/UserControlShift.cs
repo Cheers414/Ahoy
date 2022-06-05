@@ -16,7 +16,7 @@ namespace ahoy
         {
             InitializeComponent();
         }
-        ahoyCorpEntities1 ace = new ahoyCorpEntities1();
+        ahoyCorpEntities ace = new ahoyCorpEntities();
         public new void BringToFront()//此處為元件初始化
         {
             dtpShiftDatetime.MaxDate = DateTime.Now;
@@ -71,6 +71,11 @@ namespace ahoy
         }
 
         private void shiftTabpage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

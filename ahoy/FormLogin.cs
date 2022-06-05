@@ -16,7 +16,7 @@ namespace ahoy
         {
             InitializeComponent();
         }
-
+        ahoyCorpEntities ace= new ahoyCorpEntities() ;
         private void btnLogin_Click(object sender, EventArgs e)
         {
 #if DEBUG

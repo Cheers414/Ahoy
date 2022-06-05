@@ -21,10 +21,10 @@ using System.Data.Entity.Core.Objects;
 using System.Linq;
 
 
-public partial class ahoyCorpEntities1 : DbContext
+public partial class ahoyCorpEntities : DbContext
 {
-    public ahoyCorpEntities1()
-        : base("name=ahoyCorpEntities1")
+    public ahoyCorpEntities()
+        : base("name=ahoyCorpEntities")
     {
 
     }
