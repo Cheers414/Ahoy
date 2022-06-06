@@ -12,8 +12,9 @@
           <Property Name="AccountID" Type="int" Nullable="false" />
           <Property Name="account" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="gmail" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmployeeID" Type="int" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="accountEmployeeID" Type="int" />
+          <Property Name="isEnable" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ApplyStatus">
           <Key>
@@ -92,7 +93,17 @@
           </Key>
           <Property Name="StoreID" Type="int" Nullable="false" />
           <Property Name="storeName" Type="nvarchar" MaxLength="7" Nullable="false" />
-          <Property Name="storeAddress" Type="nvarchar" MaxLength="31" Nullable="false" />
+          <Property Name="storeAddress" Type="nvarchar" MaxLength="63" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="VacationRecord">
           <Key>
@@ -125,7 +136,7 @@
               <PropertyRef Name="EmployeeID" />
             </Principal>
             <Dependent Role="Account">
-              <PropertyRef Name="EmployeeID" />
+              <PropertyRef Name="accountEmployeeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -259,6 +270,7 @@
           <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShiftRule" EntityType="Self.ShiftRule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VacationRecord" EntityType="Self.VacationRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VacationType" EntityType="Self.VacationType" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Account_Employee" Association="Self.FK_Account_Employee">
@@ -310,328 +322,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ahoyCorpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Account">
-          <Key>
-            <PropertyRef Name="AccountID" />
-          </Key>
-          <Property Name="AccountID" Type="Int32" Nullable="false" />
-          <Property Name="account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="gmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeID" Type="Int32" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Account_Employee" FromRole="Account" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="ApplyStatus">
-          <Key>
-            <PropertyRef Name="ApplyStatusID" />
-          </Key>
-          <Property Name="ApplyStatusID" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="VacationRecord" Relationship="Self.FK_VacationRecord_ApplyStatus" FromRole="ApplyStatus" ToRole="VacationRecord" />
-        </EntityType>
-        <EntityType Name="Attendance">
-          <Key>
-            <PropertyRef Name="AttendanceID" />
-          </Key>
-          <Property Name="AttendanceID" Type="Int32" Nullable="false" />
-          <Property Name="AttendanceEmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="ShiftRuleID" Type="Int32" Nullable="false" />
-          <Property Name="StoreID" Type="Int32" Nullable="false" />
-          <Property Name="attendanceStartDateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="attendanceEndDateTime" Type="DateTime" Precision="3" />
-          <Property Name="overTimeStartDateTime" Type="DateTime" Precision="3" />
-          <Property Name="overTimeEndDateTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Attendance_Employee" FromRole="Attendance" ToRole="Employee" />
-          <NavigationProperty Name="ShiftRule" Relationship="Self.FK_Attendance_ShiftRule" FromRole="Attendance" ToRole="ShiftRule" />
-          <NavigationProperty Name="Store" Relationship="Self.FK_Attendance_Store" FromRole="Attendance" ToRole="Store" />
-        </EntityType>
-        <EntityType Name="Class">
-          <Key>
-            <PropertyRef Name="ClassID" />
-          </Key>
-          <Property Name="ClassID" Type="Int32" Nullable="false" />
-          <Property Name="className" Type="String" MaxLength="63" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PermissionID" Type="Int32" Nullable="false" />
-          <Property Name="salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="overtimeSalary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <NavigationProperty Name="Permission" Relationship="Self.FK_Class_Permission" FromRole="Class" ToRole="Permission" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Class" FromRole="Class" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="Departmental">
-          <Key>
-            <PropertyRef Name="DepartmentalID" />
-          </Key>
-          <Property Name="DepartmentalID" Type="Int32" Nullable="false" />
-          <Property Name="departmentalName" Type="String" MaxLength="31" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="notice" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Departmental" FromRole="Departmental" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="EmployeeID" />
-          </Key>
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="mangerEmployeeIdID" Type="Int32" />
-          <Property Name="employeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="adress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="phone" Type="String" MaxLength="31" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DepartmentalID" Type="Int32" Nullable="false" />
-          <Property Name="hireDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="contractEnd" Type="DateTime" Precision="0" />
-          <Property Name="ClassID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK_Account_Employee" FromRole="Employee" ToRole="Account" />
-          <NavigationProperty Name="Attendance" Relationship="Self.FK_Attendance_Employee" FromRole="Employee" ToRole="Attendance" />
-          <NavigationProperty Name="Class" Relationship="Self.FK_Employee_Class" FromRole="Employee" ToRole="Class" />
-          <NavigationProperty Name="Departmental" Relationship="Self.FK_Employee_Departmental" FromRole="Employee" ToRole="Departmental" />
-          <NavigationProperty Name="Employee1" Relationship="Self.FK_Employee_Employee" FromRole="Employee" ToRole="Employee1" />
-          <NavigationProperty Name="Employee2" Relationship="Self.FK_Employee_Employee" FromRole="Employee1" ToRole="Employee" />
-          <NavigationProperty Name="VacationRecord" Relationship="Self.FK_VacationRecord_Employee" FromRole="Employee" ToRole="VacationRecord" />
-        </EntityType>
-        <EntityType Name="Permission">
-          <Key>
-            <PropertyRef Name="PermissionID" />
-          </Key>
-          <Property Name="PermissionID" Type="Int32" Nullable="false" />
-          <Property Name="permissionName" Type="String" MaxLength="31" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Notice" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Class" Relationship="Self.FK_Class_Permission" FromRole="Permission" ToRole="Class" />
-        </EntityType>
-        <EntityType Name="ShiftRule">
-          <Key>
-            <PropertyRef Name="ShiftRuleID" />
-          </Key>
-          <Property Name="ShiftRuleID" Type="Int32" Nullable="false" />
-          <Property Name="shiftRuleName" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="shiftStartTime" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="shiftEndTime" Type="Time" Nullable="false" Precision="7" />
-          <NavigationProperty Name="Attendance" Relationship="Self.FK_Attendance_ShiftRule" FromRole="ShiftRule" ToRole="Attendance" />
-        </EntityType>
-        <EntityType Name="Store">
-          <Key>
-            <PropertyRef Name="StoreID" />
-          </Key>
-          <Property Name="StoreID" Type="Int32" Nullable="false" />
-          <Property Name="storeName" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="storeAddress" Type="String" MaxLength="31" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Attendance" Relationship="Self.FK_Attendance_Store" FromRole="Store" ToRole="Attendance" />
-        </EntityType>
-        <EntityType Name="VacationRecord">
-          <Key>
-            <PropertyRef Name="VacationRecordID" />
-          </Key>
-          <Property Name="VacationRecordID" Type="Int32" Nullable="false" />
-          <Property Name="VacationTypeID" Type="Int32" Nullable="false" />
-          <Property Name="DepartmentalID" Type="Int32" Nullable="false" />
-          <Property Name="ApplicantEmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="vacationStartDateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="vacationEndDateTime" Type="DateTime" Precision="3" />
-          <Property Name="vacationReason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="attachedFilesName" Type="String" MaxLength="127" FixedLength="false" Unicode="true" />
-          <Property Name="ApplyStatusID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ApplyStatus" Relationship="Self.FK_VacationRecord_ApplyStatus" FromRole="VacationRecord" ToRole="ApplyStatus" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_VacationRecord_Employee" FromRole="VacationRecord" ToRole="Employee" />
-          <NavigationProperty Name="VacationType" Relationship="Self.FK_VacationRecord_VacationType" FromRole="VacationRecord" ToRole="VacationType" />
-          <Property Name="ApplyChangedDatetime" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="VacationType">
-          <Key>
-            <PropertyRef Name="VacationTypeID" />
-          </Key>
-          <Property Name="VacationTypeID" Type="Int32" Nullable="false" />
-          <Property Name="vacationTypeName" Type="String" MaxLength="63" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="VacationRecord" Relationship="Self.FK_VacationRecord_VacationType" FromRole="VacationType" ToRole="VacationRecord" />
-          <Property Name="vacationLimit" Type="Int32" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Account_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="EmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VacationRecord_ApplyStatus">
-          <End Role="ApplyStatus" Type="Self.ApplyStatus" Multiplicity="1" />
-          <End Role="VacationRecord" Type="Self.VacationRecord" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ApplyStatus">
-              <PropertyRef Name="ApplyStatusID" />
-            </Principal>
-            <Dependent Role="VacationRecord">
-              <PropertyRef Name="ApplyStatusID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Attendance_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="Attendance">
-              <PropertyRef Name="AttendanceEmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Attendance_ShiftRule">
-          <End Role="ShiftRule" Type="Self.ShiftRule" Multiplicity="1" />
-          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ShiftRule">
-              <PropertyRef Name="ShiftRuleID" />
-            </Principal>
-            <Dependent Role="Attendance">
-              <PropertyRef Name="ShiftRuleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Attendance_Store">
-          <End Role="Store" Type="Self.Store" Multiplicity="1" />
-          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Store">
-              <PropertyRef Name="StoreID" />
-            </Principal>
-            <Dependent Role="Attendance">
-              <PropertyRef Name="StoreID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Class_Permission">
-          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
-          <End Role="Class" Type="Self.Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Permission">
-              <PropertyRef Name="PermissionID" />
-            </Principal>
-            <Dependent Role="Class">
-              <PropertyRef Name="PermissionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Employee_Class">
-          <End Role="Class" Type="Self.Class" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Class">
-              <PropertyRef Name="ClassID" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="ClassID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Employee_Departmental">
-          <End Role="Departmental" Type="Self.Departmental" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Departmental">
-              <PropertyRef Name="DepartmentalID" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="DepartmentalID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Employee_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Employee1" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="Employee1">
-              <PropertyRef Name="mangerEmployeeIdID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VacationRecord_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="VacationRecord" Type="Self.VacationRecord" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="VacationRecord">
-              <PropertyRef Name="ApplicantEmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VacationRecord_VacationType">
-          <End Role="VacationType" Type="Self.VacationType" Multiplicity="1" />
-          <End Role="VacationRecord" Type="Self.VacationRecord" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VacationType">
-              <PropertyRef Name="VacationTypeID" />
-            </Principal>
-            <Dependent Role="VacationRecord">
-              <PropertyRef Name="VacationTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ahoyCorpEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Account" EntityType="Self.Account" />
-          <EntitySet Name="ApplyStatus" EntityType="Self.ApplyStatus" />
-          <EntitySet Name="Attendance" EntityType="Self.Attendance" />
-          <EntitySet Name="Class" EntityType="Self.Class" />
-          <EntitySet Name="Departmental" EntityType="Self.Departmental" />
-          <EntitySet Name="Employee" EntityType="Self.Employee" />
-          <EntitySet Name="Permission" EntityType="Self.Permission" />
-          <EntitySet Name="ShiftRule" EntityType="Self.ShiftRule" />
-          <EntitySet Name="Store" EntityType="Self.Store" />
-          <EntitySet Name="VacationRecord" EntityType="Self.VacationRecord" />
-          <EntitySet Name="VacationType" EntityType="Self.VacationType" />
-          <AssociationSet Name="FK_Account_Employee" Association="Self.FK_Account_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Account" EntitySet="Account" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VacationRecord_ApplyStatus" Association="Self.FK_VacationRecord_ApplyStatus">
-            <End Role="ApplyStatus" EntitySet="ApplyStatus" />
-            <End Role="VacationRecord" EntitySet="VacationRecord" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Attendance_Employee" Association="Self.FK_Attendance_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Attendance" EntitySet="Attendance" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Attendance_ShiftRule" Association="Self.FK_Attendance_ShiftRule">
-            <End Role="ShiftRule" EntitySet="ShiftRule" />
-            <End Role="Attendance" EntitySet="Attendance" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Attendance_Store" Association="Self.FK_Attendance_Store">
-            <End Role="Store" EntitySet="Store" />
-            <End Role="Attendance" EntitySet="Attendance" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Class_Permission" Association="Self.FK_Class_Permission">
-            <End Role="Permission" EntitySet="Permission" />
-            <End Role="Class" EntitySet="Class" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Class" Association="Self.FK_Employee_Class">
-            <End Role="Class" EntitySet="Class" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Departmental" Association="Self.FK_Employee_Departmental">
-            <End Role="Departmental" EntitySet="Departmental" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Employee" Association="Self.FK_Employee_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Employee1" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VacationRecord_Employee" Association="Self.FK_VacationRecord_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="VacationRecord" EntitySet="VacationRecord" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VacationRecord_VacationType" Association="Self.FK_VacationRecord_VacationType">
-            <End Role="VacationType" EntitySet="VacationType" />
-            <End Role="VacationRecord" EntitySet="VacationRecord" />
-          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -662,6 +353,62 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Account" EntityType="ahoyCorpModel.Account" />
+          <EntitySet Name="ApplyStatus" EntityType="ahoyCorpModel.ApplyStatus" />
+          <EntitySet Name="Attendance" EntityType="ahoyCorpModel.Attendance" />
+          <EntitySet Name="Class" EntityType="ahoyCorpModel.Class" />
+          <EntitySet Name="Departmental" EntityType="ahoyCorpModel.Departmental" />
+          <EntitySet Name="Employee" EntityType="ahoyCorpModel.Employee" />
+          <EntitySet Name="Permission" EntityType="ahoyCorpModel.Permission" />
+          <EntitySet Name="ShiftRule" EntityType="ahoyCorpModel.ShiftRule" />
+          <EntitySet Name="Store" EntityType="ahoyCorpModel.Store" />
+          <EntitySet Name="sysdiagrams" EntityType="ahoyCorpModel.sysdiagrams" />
+          <EntitySet Name="VacationRecord" EntityType="ahoyCorpModel.VacationRecord" />
+          <EntitySet Name="VacationType" EntityType="ahoyCorpModel.VacationType" />
+          <AssociationSet Name="FK_Account_Employee" Association="ahoyCorpModel.FK_Account_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacationRecord_ApplyStatus" Association="ahoyCorpModel.FK_VacationRecord_ApplyStatus">
+            <End Role="ApplyStatus" EntitySet="ApplyStatus" />
+            <End Role="VacationRecord" EntitySet="VacationRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_Employee" Association="ahoyCorpModel.FK_Attendance_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_ShiftRule" Association="ahoyCorpModel.FK_Attendance_ShiftRule">
+            <End Role="ShiftRule" EntitySet="ShiftRule" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_Store" Association="ahoyCorpModel.FK_Attendance_Store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Permission" Association="ahoyCorpModel.FK_Class_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Class" Association="ahoyCorpModel.FK_Employee_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Departmental" Association="ahoyCorpModel.FK_Employee_Departmental">
+            <End Role="Departmental" EntitySet="Departmental" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Employee" Association="ahoyCorpModel.FK_Employee_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee1" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacationRecord_Employee" Association="ahoyCorpModel.FK_VacationRecord_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="VacationRecord" EntitySet="VacationRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacationRecord_VacationType" Association="ahoyCorpModel.FK_VacationRecord_VacationType">
+            <End Role="VacationType" EntitySet="VacationType" />
+            <End Role="VacationRecord" EntitySet="VacationRecord" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -674,6 +421,283 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" />
+          <Property Name="account" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="accountEmployeeID" Type="Int32" />
+          <Property Name="isEnable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="ahoyCorpModel.FK_Account_Employee" FromRole="Account" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="ApplyStatus">
+          <Key>
+            <PropertyRef Name="ApplyStatusID" />
+          </Key>
+          <Property Name="ApplyStatusID" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="VacationRecord" Relationship="ahoyCorpModel.FK_VacationRecord_ApplyStatus" FromRole="ApplyStatus" ToRole="VacationRecord" />
+        </EntityType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+          </Key>
+          <Property Name="AttendanceID" Type="Int32" Nullable="false" />
+          <Property Name="AttendanceEmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="ShiftRuleID" Type="Int32" Nullable="false" />
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <Property Name="attendanceStartDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="attendanceEndDateTime" Type="DateTime" Precision="3" />
+          <Property Name="overTimeStartDateTime" Type="DateTime" Precision="3" />
+          <Property Name="overTimeEndDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employee" Relationship="ahoyCorpModel.FK_Attendance_Employee" FromRole="Attendance" ToRole="Employee" />
+          <NavigationProperty Name="ShiftRule" Relationship="ahoyCorpModel.FK_Attendance_ShiftRule" FromRole="Attendance" ToRole="ShiftRule" />
+          <NavigationProperty Name="Store" Relationship="ahoyCorpModel.FK_Attendance_Store" FromRole="Attendance" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="className" Type="String" Nullable="false" MaxLength="63" FixedLength="false" Unicode="true" />
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
+          <Property Name="salary" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="overtimeSalary" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Permission" Relationship="ahoyCorpModel.FK_Class_Permission" FromRole="Class" ToRole="Permission" />
+          <NavigationProperty Name="Employee" Relationship="ahoyCorpModel.FK_Employee_Class" FromRole="Class" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Departmental">
+          <Key>
+            <PropertyRef Name="DepartmentalID" />
+          </Key>
+          <Property Name="DepartmentalID" Type="Int32" Nullable="false" />
+          <Property Name="departmentalName" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="true" />
+          <Property Name="notice" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="ahoyCorpModel.FK_Employee_Departmental" FromRole="Departmental" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="mangerEmployeeIdID" Type="Int32" />
+          <Property Name="employeeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="adress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentalID" Type="Int32" Nullable="false" />
+          <Property Name="hireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="contractEnd" Type="DateTime" Precision="0" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="ahoyCorpModel.FK_Account_Employee" FromRole="Employee" ToRole="Account" />
+          <NavigationProperty Name="Attendance" Relationship="ahoyCorpModel.FK_Attendance_Employee" FromRole="Employee" ToRole="Attendance" />
+          <NavigationProperty Name="Class" Relationship="ahoyCorpModel.FK_Employee_Class" FromRole="Employee" ToRole="Class" />
+          <NavigationProperty Name="Departmental" Relationship="ahoyCorpModel.FK_Employee_Departmental" FromRole="Employee" ToRole="Departmental" />
+          <NavigationProperty Name="Employee1" Relationship="ahoyCorpModel.FK_Employee_Employee" FromRole="Employee" ToRole="Employee1" />
+          <NavigationProperty Name="Employee2" Relationship="ahoyCorpModel.FK_Employee_Employee" FromRole="Employee1" ToRole="Employee" />
+          <NavigationProperty Name="VacationRecord" Relationship="ahoyCorpModel.FK_VacationRecord_Employee" FromRole="Employee" ToRole="VacationRecord" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
+          <Property Name="permissionName" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="true" />
+          <Property Name="Notice" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Class" Relationship="ahoyCorpModel.FK_Class_Permission" FromRole="Permission" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="ShiftRule">
+          <Key>
+            <PropertyRef Name="ShiftRuleID" />
+          </Key>
+          <Property Name="ShiftRuleID" Type="Int32" Nullable="false" />
+          <Property Name="shiftRuleName" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="shiftStartTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="shiftEndTime" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Attendance" Relationship="ahoyCorpModel.FK_Attendance_ShiftRule" FromRole="ShiftRule" ToRole="Attendance" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <Property Name="storeName" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="storeAddress" Type="String" Nullable="false" MaxLength="63" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Attendance" Relationship="ahoyCorpModel.FK_Attendance_Store" FromRole="Store" ToRole="Attendance" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="VacationRecord">
+          <Key>
+            <PropertyRef Name="VacationRecordID" />
+          </Key>
+          <Property Name="VacationRecordID" Type="Int32" Nullable="false" />
+          <Property Name="VacationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentalID" Type="Int32" Nullable="false" />
+          <Property Name="ApplicantEmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="vacationStartDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="vacationEndDateTime" Type="DateTime" Precision="3" />
+          <Property Name="vacationReason" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="attachedFilesName" Type="String" MaxLength="127" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyStatusID" Type="Int32" Nullable="false" />
+          <Property Name="ApplyChangedDatetime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ApplyStatus" Relationship="ahoyCorpModel.FK_VacationRecord_ApplyStatus" FromRole="VacationRecord" ToRole="ApplyStatus" />
+          <NavigationProperty Name="Employee" Relationship="ahoyCorpModel.FK_VacationRecord_Employee" FromRole="VacationRecord" ToRole="Employee" />
+          <NavigationProperty Name="VacationType" Relationship="ahoyCorpModel.FK_VacationRecord_VacationType" FromRole="VacationRecord" ToRole="VacationType" />
+        </EntityType>
+        <EntityType Name="VacationType">
+          <Key>
+            <PropertyRef Name="VacationTypeID" />
+          </Key>
+          <Property Name="VacationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="vacationTypeName" Type="String" Nullable="false" MaxLength="63" FixedLength="false" Unicode="true" />
+          <Property Name="vacationLimit" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VacationRecord" Relationship="ahoyCorpModel.FK_VacationRecord_VacationType" FromRole="VacationType" ToRole="VacationRecord" />
+        </EntityType>
+        <Association Name="FK_Account_Employee">
+          <End Type="ahoyCorpModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ahoyCorpModel.Account" Role="Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="accountEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacationRecord_ApplyStatus">
+          <End Type="ahoyCorpModel.ApplyStatus" Role="ApplyStatus" Multiplicity="1" />
+          <End Type="ahoyCorpModel.VacationRecord" Role="VacationRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplyStatus">
+              <PropertyRef Name="ApplyStatusID" />
+            </Principal>
+            <Dependent Role="VacationRecord">
+              <PropertyRef Name="ApplyStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_Employee">
+          <End Type="ahoyCorpModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="ahoyCorpModel.Attendance" Role="Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="AttendanceEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_ShiftRule">
+          <End Type="ahoyCorpModel.ShiftRule" Role="ShiftRule" Multiplicity="1" />
+          <End Type="ahoyCorpModel.Attendance" Role="Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShiftRule">
+              <PropertyRef Name="ShiftRuleID" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="ShiftRuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_Store">
+          <End Type="ahoyCorpModel.Store" Role="Store" Multiplicity="1" />
+          <End Type="ahoyCorpModel.Attendance" Role="Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Permission">
+          <End Type="ahoyCorpModel.Permission" Role="Permission" Multiplicity="1" />
+          <End Type="ahoyCorpModel.Class" Role="Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Class">
+          <End Type="ahoyCorpModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="ahoyCorpModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Departmental">
+          <End Type="ahoyCorpModel.Departmental" Role="Departmental" Multiplicity="1" />
+          <End Type="ahoyCorpModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departmental">
+              <PropertyRef Name="DepartmentalID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DepartmentalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Employee">
+          <End Type="ahoyCorpModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ahoyCorpModel.Employee" Role="Employee1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="mangerEmployeeIdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacationRecord_Employee">
+          <End Type="ahoyCorpModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="ahoyCorpModel.VacationRecord" Role="VacationRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="VacationRecord">
+              <PropertyRef Name="ApplicantEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacationRecord_VacationType">
+          <End Type="ahoyCorpModel.VacationType" Role="VacationType" Multiplicity="1" />
+          <End Type="ahoyCorpModel.VacationRecord" Role="VacationRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VacationType">
+              <PropertyRef Name="VacationTypeID" />
+            </Principal>
+            <Dependent Role="VacationRecord">
+              <PropertyRef Name="VacationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -683,98 +707,110 @@
           <EntitySetMapping Name="Account">
             <EntityTypeMapping TypeName="ahoyCorpModel.Account">
               <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+                <ScalarProperty Name="accountEmployeeID" ColumnName="accountEmployeeID" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="account" ColumnName="account" />
                 <ScalarProperty Name="AccountID" ColumnName="AccountID" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="gmail" ColumnName="gmail" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplyStatus">
             <EntityTypeMapping TypeName="ahoyCorpModel.ApplyStatus">
               <MappingFragment StoreEntitySet="ApplyStatus">
-                <ScalarProperty Name="ApplyStatusID" ColumnName="ApplyStatusID" />
                 <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="ApplyStatusID" ColumnName="ApplyStatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Attendance">
             <EntityTypeMapping TypeName="ahoyCorpModel.Attendance">
               <MappingFragment StoreEntitySet="Attendance">
-                <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
-                <ScalarProperty Name="AttendanceEmployeeID" ColumnName="AttendanceEmployeeID" />
-                <ScalarProperty Name="ShiftRuleID" ColumnName="ShiftRuleID" />
-                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
-                <ScalarProperty Name="attendanceStartDateTime" ColumnName="attendanceStartDateTime" />
-                <ScalarProperty Name="attendanceEndDateTime" ColumnName="attendanceEndDateTime" />
-                <ScalarProperty Name="overTimeStartDateTime" ColumnName="overTimeStartDateTime" />
                 <ScalarProperty Name="overTimeEndDateTime" ColumnName="overTimeEndDateTime" />
+                <ScalarProperty Name="overTimeStartDateTime" ColumnName="overTimeStartDateTime" />
+                <ScalarProperty Name="attendanceEndDateTime" ColumnName="attendanceEndDateTime" />
+                <ScalarProperty Name="attendanceStartDateTime" ColumnName="attendanceStartDateTime" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+                <ScalarProperty Name="ShiftRuleID" ColumnName="ShiftRuleID" />
+                <ScalarProperty Name="AttendanceEmployeeID" ColumnName="AttendanceEmployeeID" />
+                <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Class">
             <EntityTypeMapping TypeName="ahoyCorpModel.Class">
               <MappingFragment StoreEntitySet="Class">
-                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
-                <ScalarProperty Name="className" ColumnName="className" />
-                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
-                <ScalarProperty Name="salary" ColumnName="salary" />
                 <ScalarProperty Name="overtimeSalary" ColumnName="overtimeSalary" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+                <ScalarProperty Name="className" ColumnName="className" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Departmental">
             <EntityTypeMapping TypeName="ahoyCorpModel.Departmental">
               <MappingFragment StoreEntitySet="Departmental">
-                <ScalarProperty Name="DepartmentalID" ColumnName="DepartmentalID" />
-                <ScalarProperty Name="departmentalName" ColumnName="departmentalName" />
                 <ScalarProperty Name="notice" ColumnName="notice" />
+                <ScalarProperty Name="departmentalName" ColumnName="departmentalName" />
+                <ScalarProperty Name="DepartmentalID" ColumnName="DepartmentalID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="ahoyCorpModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="mangerEmployeeIdID" ColumnName="mangerEmployeeIdID" />
-                <ScalarProperty Name="employeeName" ColumnName="employeeName" />
-                <ScalarProperty Name="birthday" ColumnName="birthday" />
-                <ScalarProperty Name="adress" ColumnName="adress" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="DepartmentalID" ColumnName="DepartmentalID" />
-                <ScalarProperty Name="hireDate" ColumnName="hireDate" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="contractEnd" ColumnName="contractEnd" />
                 <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="contractEnd" ColumnName="contractEnd" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="hireDate" ColumnName="hireDate" />
+                <ScalarProperty Name="DepartmentalID" ColumnName="DepartmentalID" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="employeeName" ColumnName="employeeName" />
+                <ScalarProperty Name="mangerEmployeeIdID" ColumnName="mangerEmployeeIdID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Permission">
             <EntityTypeMapping TypeName="ahoyCorpModel.Permission">
               <MappingFragment StoreEntitySet="Permission">
-                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
-                <ScalarProperty Name="permissionName" ColumnName="permissionName" />
                 <ScalarProperty Name="Notice" ColumnName="Notice" />
+                <ScalarProperty Name="permissionName" ColumnName="permissionName" />
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ShiftRule">
             <EntityTypeMapping TypeName="ahoyCorpModel.ShiftRule">
               <MappingFragment StoreEntitySet="ShiftRule">
-                <ScalarProperty Name="ShiftRuleID" ColumnName="ShiftRuleID" />
-                <ScalarProperty Name="shiftRuleName" ColumnName="shiftRuleName" />
-                <ScalarProperty Name="shiftStartTime" ColumnName="shiftStartTime" />
                 <ScalarProperty Name="shiftEndTime" ColumnName="shiftEndTime" />
+                <ScalarProperty Name="shiftStartTime" ColumnName="shiftStartTime" />
+                <ScalarProperty Name="shiftRuleName" ColumnName="shiftRuleName" />
+                <ScalarProperty Name="ShiftRuleID" ColumnName="ShiftRuleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Store">
             <EntityTypeMapping TypeName="ahoyCorpModel.Store">
               <MappingFragment StoreEntitySet="Store">
-                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
-                <ScalarProperty Name="storeName" ColumnName="storeName" />
                 <ScalarProperty Name="storeAddress" ColumnName="storeAddress" />
+                <ScalarProperty Name="storeName" ColumnName="storeName" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ahoyCorpModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -782,15 +818,15 @@
             <EntityTypeMapping TypeName="ahoyCorpModel.VacationRecord">
               <MappingFragment StoreEntitySet="VacationRecord">
                 <ScalarProperty Name="ApplyChangedDatetime" ColumnName="ApplyChangedDatetime" />
-                <ScalarProperty Name="VacationRecordID" ColumnName="VacationRecordID" />
-                <ScalarProperty Name="VacationTypeID" ColumnName="VacationTypeID" />
-                <ScalarProperty Name="DepartmentalID" ColumnName="DepartmentalID" />
-                <ScalarProperty Name="ApplicantEmployeeID" ColumnName="ApplicantEmployeeID" />
-                <ScalarProperty Name="vacationStartDateTime" ColumnName="vacationStartDateTime" />
-                <ScalarProperty Name="vacationEndDateTime" ColumnName="vacationEndDateTime" />
-                <ScalarProperty Name="vacationReason" ColumnName="vacationReason" />
-                <ScalarProperty Name="attachedFilesName" ColumnName="attachedFilesName" />
                 <ScalarProperty Name="ApplyStatusID" ColumnName="ApplyStatusID" />
+                <ScalarProperty Name="attachedFilesName" ColumnName="attachedFilesName" />
+                <ScalarProperty Name="vacationReason" ColumnName="vacationReason" />
+                <ScalarProperty Name="vacationEndDateTime" ColumnName="vacationEndDateTime" />
+                <ScalarProperty Name="vacationStartDateTime" ColumnName="vacationStartDateTime" />
+                <ScalarProperty Name="ApplicantEmployeeID" ColumnName="ApplicantEmployeeID" />
+                <ScalarProperty Name="DepartmentalID" ColumnName="DepartmentalID" />
+                <ScalarProperty Name="VacationTypeID" ColumnName="VacationTypeID" />
+                <ScalarProperty Name="VacationRecordID" ColumnName="VacationRecordID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -798,12 +834,12 @@
             <EntityTypeMapping TypeName="ahoyCorpModel.VacationType">
               <MappingFragment StoreEntitySet="VacationType">
                 <ScalarProperty Name="vacationLimit" ColumnName="vacationLimit" />
-                <ScalarProperty Name="VacationTypeID" ColumnName="VacationTypeID" />
                 <ScalarProperty Name="vacationTypeName" ColumnName="vacationTypeName" />
+                <ScalarProperty Name="VacationTypeID" ColumnName="VacationTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

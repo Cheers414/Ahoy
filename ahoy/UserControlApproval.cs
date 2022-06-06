@@ -48,7 +48,7 @@ namespace ahoy
                     return;
                 }
                 var holidayLimit = approvalVactionType.vacationLimit; //假別配額變數
-                var approvaVacionRecord = ace.VacationRecord.Where(x => x.ApplicantEmployeeID == loginAccount.EmployeeID && x.VacationTypeID == i).ToList();
+                var approvaVacionRecord = ace.VacationRecord.Where(x => x.ApplicantEmployeeID == loginAccount.accountEmployeeID&& x.VacationTypeID == i).ToList();
                 if(approvaVacionRecord == null && !approvaVacionRecord.Any()) // 如果沒有該假別請假紀錄 已用天數(holidaySum) 為 "0"
                 {
                     holidaySum = "0";
@@ -72,7 +72,7 @@ namespace ahoy
 
         private void ShowVactionRecord() //個人請假申請記錄
         {
-            var accounte = globalVariable.user.EmployeeID;//獲取登入者員工編號
+            var accounte = globalVariable.user.accountEmployeeID;//獲取登入者員工編號
             ace.VacationRecord.Where(x => x.ApplicantEmployeeID == accounte).ForEach(x => {
                 var manager = ace.Employee.Find(x.Employee.mangerEmployeeIdID);
                 var item = new ListViewItem() { Text = x.VacationRecordID.ToString() };
@@ -99,7 +99,7 @@ namespace ahoy
 
         private void btnKeyWord_Click(object sender, EventArgs e) //個人請假申請記錄查詢
         {
-            var accounte = globalVariable.user.EmployeeID;//獲取登入者帳號
+            var accounte = globalVariable.user.accountEmployeeID;//獲取登入者帳號
             listView1.Items.Clear();
             var result = ace.VacationRecord.Where(x => x.ApplicantEmployeeID == accounte && (x.vacationReason.Contains(txtkeyWord.Text) 
             || x.ApplyStatus.status.Contains(txtkeyWord.Text) || x.VacationType.vacationTypeName.Contains(txtkeyWord.Text)));
@@ -133,7 +133,7 @@ namespace ahoy
         {
             var accounte = globalVariable.user.account;//獲取登入者帳號
             var loginAccount = ace.Account.Where(x => x.account == accounte).FirstOrDefault();
-            var loginEmployee = ace.Employee.Where(x => x.EmployeeID == loginAccount.EmployeeID).FirstOrDefault();
+            var loginEmployee = ace.Employee.Where(x => x.EmployeeID == loginAccount.accountEmployeeID).FirstOrDefault();
             txtDepartmentalID.Text = ace.Departmental.Find(loginEmployee.DepartmentalID).departmentalName;
             txtApplicantEmployeeID.Text = loginEmployee.employeeName;
         }
@@ -141,7 +141,7 @@ namespace ahoy
         private void btnNew_Click(object sender, EventArgs e)
         {
             int holidaySum;
-            var empId = globalVariable.user.EmployeeID;//獲取登入者員工編號
+            var empId = globalVariable.user.accountEmployeeID;//獲取登入者員工編號
             var accounte = globalVariable.user.account;//獲取登入者帳號
 
             var loginAccount = ace.Account.Where(x => x.account == accounte).FirstOrDefault();
@@ -180,8 +180,8 @@ namespace ahoy
                     VacationRecordID = ace.VacationRecord.Count() + 1,
                     //SecondID = Guid.NewGuid().ToString()
                     VacationTypeID = vacType,
-                    DepartmentalID = ace.Employee.Find(loginAccount.EmployeeID).DepartmentalID,
-                    ApplicantEmployeeID = loginAccount.EmployeeID.Value,
+                    DepartmentalID = ace.Employee.Find(loginAccount.accountEmployeeID).DepartmentalID,
+                    ApplicantEmployeeID = loginAccount.accountEmployeeID.Value,
                     vacationStartDateTime = dtpStartTime.Value,
                     vacationEndDateTime = dtpEndTime.Value,
                     vacationReason = txtReason.Text,
@@ -216,7 +216,7 @@ namespace ahoy
 
         private void Applicationrecords()
         {
-            var accounte = globalVariable.user.EmployeeID;//獲取登入者員工編號
+            var accounte = globalVariable.user.accountEmployeeID;//獲取登入者員工編號
             //var manager = ace.Employee.Find(accounte).mangerEmployeeIdID;
             var records = ace.VacationRecord.Where(x => x.Employee.mangerEmployeeIdID == accounte).ToList();
             records.ForEach(x => {
@@ -244,7 +244,7 @@ namespace ahoy
 
         private void btnAppKeyWord_Click(object sender, EventArgs e)
         {
-            var accounte = globalVariable.user.EmployeeID;//獲取登入者員工編號
+            var accounte = globalVariable.user.accountEmployeeID;//獲取登入者員工編號
             
             listView2.Items.Clear();
             var records = ace.VacationRecord.Where(x => x.Employee.mangerEmployeeIdID == accounte);

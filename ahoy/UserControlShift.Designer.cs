@@ -191,6 +191,7 @@
             this.cbStore.Name = "cbStore";
             this.cbStore.Size = new System.Drawing.Size(200, 28);
             this.cbStore.TabIndex = 15;
+            this.cbStore.SelectedIndexChanged += new System.EventHandler(this.dtpShiftDatetime_ValueChanged);
             // 
             // tabPage2
             // 

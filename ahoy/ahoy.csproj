@@ -143,6 +143,9 @@
     <Compile Include="Store.cs">
       <DependentUpon>ahoyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ahoyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserControlApproval.cs">
       <SubType>UserControl</SubType>
     </Compile>

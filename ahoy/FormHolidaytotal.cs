@@ -23,7 +23,7 @@ namespace ahoy
             int i = 1;
             var accounte = globalVariable.user.account;//獲取登入者帳號
             var loginAccount = ace.Account.Where(x => x.account == accounte).FirstOrDefault();
-            var loginEmployeeId = loginAccount.EmployeeID;//取得登入帳號 員工編號(EmployeeID)
+            var loginEmployeeId = loginAccount.accountEmployeeID;//取得登入帳號 員工編號(EmployeeID)
             String holidaySum;
             for (i = 1; i < 14; i++)
             {

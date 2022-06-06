@@ -21,19 +21,47 @@ namespace ahoy
         {
 #if DEBUG
             // TO DO: 接上資料庫的Account : done
-            var UserAccount = ace.Account.ToList().SingleOrDefault(x => x.account == txtInputAccount.Text && x.password == txtInputPassword.Text);
-#else
-            var UserAccount = ace.Account.ToList().SingleOrDefault(x => x.account == txtInputAccount.Text && x.password == txtInputPassword.Text);
-#endif
 
-            if (UserAccount == null)
+            try
+            {
+                var UserAccount = ace.Account.ToList().SingleOrDefault(x => x.account == txtInputAccount.Text && x.password == txtInputPassword.Text&&x.isEnable == true);
+                globalVariable.user = UserAccount;
+            }
+            catch
             {
                 MessageBox.Show("帳號或密碼有誤", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                globalVariable.user = null;
+                return;
+            }
+            if (globalVariable.user == null)
+            {
+                MessageBox.Show("找不到此帳號", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             MessageBox.Show("登入成功", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             DialogResult = DialogResult.OK;
-            globalVariable.user = UserAccount;
+
+#else
+             try
+            {
+                  var UserAccount = ace.Account.ToList().SingleOrDefault(x => x.account == txtInputAccount.Text && x.password == txtInputPassword.Text&&x.isEnable == true);
+                globalVariable.user = UserAccount;
+            }
+            catch
+            {
+                MessageBox.Show("帳號或密碼有誤", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                globalVariable.user = null;
+                return;
+            }
+            if (globalVariable.user == null)
+            {
+                MessageBox.Show("找不到此帳號", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            MessageBox.Show("登入成功", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult = DialogResult.OK;
+#endif
+
             Close();
 
         }
