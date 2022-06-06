@@ -167,9 +167,9 @@ namespace ahoy
                     MessageBox.Show("事由不得為空!", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                int v = int.Parse(holidayLimit);
-                int c = (dtpEndTime.Value - dtpStartTime.Value).Days;
-                if (c + holidaySum > v)
+                int iholidaylimit = int.Parse(holidayLimit);
+                int Reminddays = (dtpEndTime.Value - dtpStartTime.Value).Days;
+                if (Reminddays + holidaySum > iholidaylimit)
                 {
                     MessageBox.Show("已超過請假配額上限!", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

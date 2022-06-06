@@ -119,6 +119,12 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormShift.Designer.cs">
+      <DependentUpon>FormShift.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUnitTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormShift.resx">
+      <DependentUpon>FormShift.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUnitTest.resx">
       <DependentUpon>FormUnitTest.cs</DependentUpon>

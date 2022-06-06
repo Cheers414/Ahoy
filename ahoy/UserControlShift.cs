@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,14 +19,17 @@ namespace ahoy
             InitializeComponent();
         }
         ahoyCorpEntities ace = new ahoyCorpEntities();
+        List<string> listTime = new List<string> { "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00","17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00" };
         public new void BringToFront()//此處為元件初始化
         {
-            dtpShiftDatetime.MaxDate = DateTime.Now;
+            dtpShiftDatetime.Value = DateTime.Now;
 
             cbShiftRuleType.DataSource = ace.ShiftRule.ToList();
             cbStore.DataSource = ace.Store.ToList();
             cbStore.DisplayMember = "storeName";
             cbShiftRuleType.DisplayMember = "shiftRuleName";
+            cbShiftTypeEndTime.DataSource = 　cbShiftTypeStartTime.DataSource = listTime.ToList();
+            
             base.BringToFront();
         }
 
@@ -53,7 +57,8 @@ namespace ahoy
 
         private void dtpShiftDatetime_ValueChanged(object sender, EventArgs e)
         {
-            var shiftAttendance = ace.Attendance.ToList().Where(x => x.attendanceStartDateTime.Date == dtpShiftDatetime.Value.Date && x.Store == cbStore.SelectedItem).ToList();
+            var shiftAttendance = ace.Attendance.ToList().Where(x => x.attendanceStartDateTime.Date == dtpShiftDatetime.Value.Date 
+            && x.Store == cbStore.SelectedItem).ToList();
             if (shiftAttendance == null)
             {
                 MessageBox.Show("找不到資料", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -72,24 +77,21 @@ namespace ahoy
                 
             });
             dgvShift.DataSource = RemoveDuplicateRows(dtShift,"ID");
-            //.AsEnumerable().GroupBy(x => x.Field<int>("ID")).  Select(y=>y.First()).CopyToDataTable();
+            
         }
 
-        private void shiftTabpage_Click(object sender, EventArgs e)
-        {
-
-        }
+       
         public DataTable RemoveDuplicateRows(DataTable dTable, string colName)
         {
-            Hashtable hTable = new Hashtable();
+            Hashtable Table = new Hashtable();
             ArrayList duplicateList = new ArrayList();
 
             foreach (DataRow drow in dTable.Rows)
             {
-                if (hTable.Contains(drow[colName]))
+                if (Table.Contains(drow[colName]))
                     duplicateList.Add(drow);
                 else
-                    hTable.Add(drow[colName], string.Empty);
+                    Table.Add(drow[colName], string.Empty);
             }
 
             foreach (DataRow dRow in duplicateList)
@@ -97,9 +99,35 @@ namespace ahoy
 
             return dTable;
         }
-        private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+        private void dgvShift_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtpShiftDatetime.Value <= DateTime.Now)
+            {
+                MessageBox.Show("過去的資料無法竄改", Properties.Resources.systemName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            FormShift formShift = new FormShift();
+            formShift.empolyeeId = (int)dgvShift.SelectedRows[e.RowIndex].Cells[0].Value;
+            formShift.empolyeeName = (string)dgvShift.SelectedRows[e.RowIndex].Cells[1].Value;
+            formShift.empolyeeType = (string)dgvShift.SelectedRows[e.RowIndex].Cells[2].Value;
+            if (formShift.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            var employeeShift = ace.Attendance.ToList().SingleOrDefault(x => x.Store == cbStore.SelectedItem && x.AttendanceEmployeeID == formShift.empolyeeId && x.attendanceStartDateTime == dtpShiftDatetime.Value);
+            employeeShift.ShiftRule = ace.ShiftRule.ToList().SingleOrDefault(x => x.shiftRuleName == formShift.empolyeeType);
+            ace.Entry(employeeShift).State = EntityState.Modified;
+        }
+
+
+        private void dgvShift_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void cbShiftRuleType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

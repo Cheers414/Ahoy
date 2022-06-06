@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiBtnReset = new Sunny.UI.UIButton();
             this.uiBtnSave = new Sunny.UI.UIButton();
             this.uiTabControlShift = new Sunny.UI.UITabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvShift = new System.Windows.Forms.DataGridView();
             this.dtpShiftDatetime = new System.Windows.Forms.DateTimePicker();
             this.labelShiftDatetime = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@
             this.labelShiftRuleType = new System.Windows.Forms.Label();
             this.cbShiftRuleType = new System.Windows.Forms.ComboBox();
             this.txtReason = new Sunny.UI.UIRichTextBox();
+            this.uiButton1 = new Sunny.UI.UIButton();
+            this.uiButton2 = new Sunny.UI.UIButton();
             this.uiTabControlShift.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShift)).BeginInit();
@@ -58,7 +61,7 @@
             // 
             this.uiBtnReset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiBtnReset.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.uiBtnReset.Location = new System.Drawing.Point(931, 561);
+            this.uiBtnReset.Location = new System.Drawing.Point(929, 521);
             this.uiBtnReset.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiBtnReset.Name = "uiBtnReset";
             this.uiBtnReset.Radius = 12;
@@ -66,13 +69,12 @@
             this.uiBtnReset.TabIndex = 11;
             this.uiBtnReset.Text = "重置";
             this.uiBtnReset.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.uiBtnReset.Click += new System.EventHandler(this.uiBtnReset_Click);
             // 
             // uiBtnSave
             // 
             this.uiBtnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiBtnSave.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.uiBtnSave.Location = new System.Drawing.Point(790, 561);
+            this.uiBtnSave.Location = new System.Drawing.Point(793, 521);
             this.uiBtnSave.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiBtnSave.Name = "uiBtnSave";
             this.uiBtnSave.Radius = 12;
@@ -80,7 +82,6 @@
             this.uiBtnSave.TabIndex = 10;
             this.uiBtnSave.Text = "儲存";
             this.uiBtnSave.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.uiBtnSave.Click += new System.EventHandler(this.uiBtnSave_Click);
             // 
             // uiTabControlShift
             // 
@@ -94,7 +95,7 @@
             this.uiTabControlShift.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.uiTabControlShift.Name = "uiTabControlShift";
             this.uiTabControlShift.SelectedIndex = 0;
-            this.uiTabControlShift.Size = new System.Drawing.Size(1064, 525);
+            this.uiTabControlShift.Size = new System.Drawing.Size(1064, 617);
             this.uiTabControlShift.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControlShift.Style = Sunny.UI.UIStyle.Custom;
             this.uiTabControlShift.TabBackColor = System.Drawing.Color.White;
@@ -107,6 +108,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.uiButton1);
+            this.tabPage1.Controls.Add(this.uiButton2);
+            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.dgvShift);
             this.tabPage1.Controls.Add(this.dtpShiftDatetime);
             this.tabPage1.Controls.Add(this.labelShiftDatetime);
@@ -115,10 +119,20 @@
             this.tabPage1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tabPage1.Location = new System.Drawing.Point(0, 40);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1064, 485);
+            this.tabPage1.Size = new System.Drawing.Size(1064, 577);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "排班";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(86, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 19);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "點兩下列表即可修改";
             // 
             // dgvShift
             // 
@@ -126,19 +140,19 @@
             this.dgvShift.AllowUserToDeleteRows = false;
             this.dgvShift.AllowUserToResizeColumns = false;
             this.dgvShift.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShift.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShift.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvShift.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvShift.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvShift.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShift.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShift.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShift.GridColor = System.Drawing.Color.White;
             this.dgvShift.Location = new System.Drawing.Point(90, 107);
@@ -148,21 +162,23 @@
             this.dgvShift.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvShift.RowHeadersVisible = false;
             this.dgvShift.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShift.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShift.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvShift.RowTemplate.Height = 24;
             this.dgvShift.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShift.Size = new System.Drawing.Size(914, 333);
             this.dgvShift.TabIndex = 19;
+            this.dgvShift.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShift_CellDoubleClick);
+            this.dgvShift.DoubleClick += new System.EventHandler(this.uiBtnSave_Click);
+            this.dgvShift.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvShift_MouseDoubleClick);
             // 
             // dtpShiftDatetime
             // 
             this.dtpShiftDatetime.Location = new System.Drawing.Point(498, 45);
-            this.dtpShiftDatetime.MaxDate = new System.DateTime(2022, 5, 31, 0, 0, 0, 0);
             this.dtpShiftDatetime.Name = "dtpShiftDatetime";
             this.dtpShiftDatetime.Size = new System.Drawing.Size(200, 29);
             this.dtpShiftDatetime.TabIndex = 18;
-            this.dtpShiftDatetime.Value = new System.DateTime(2022, 5, 31, 0, 0, 0, 0);
+            this.dtpShiftDatetime.Value = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.dtpShiftDatetime.ValueChanged += new System.EventHandler(this.dtpShiftDatetime_ValueChanged);
             // 
             // labelShiftDatetime
@@ -196,7 +212,9 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.cbShiftTypeEndTime);
+            this.tabPage2.Controls.Add(this.uiBtnReset);
             this.tabPage2.Controls.Add(this.cbShiftTypeStartTime);
+            this.tabPage2.Controls.Add(this.uiBtnSave);
             this.tabPage2.Controls.Add(this.labelShiftStartTime);
             this.tabPage2.Controls.Add(this.labelShiftEndTime);
             this.tabPage2.Controls.Add(this.labelShiftRuleType);
@@ -204,7 +222,7 @@
             this.tabPage2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tabPage2.Location = new System.Drawing.Point(0, 40);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(1064, 485);
+            this.tabPage2.Size = new System.Drawing.Size(1064, 577);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "排班規則";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -259,6 +277,7 @@
             this.cbShiftRuleType.Name = "cbShiftRuleType";
             this.cbShiftRuleType.Size = new System.Drawing.Size(250, 28);
             this.cbShiftRuleType.TabIndex = 22;
+            this.cbShiftRuleType.SelectedIndexChanged += new System.EventHandler(this.cbShiftRuleType_SelectedIndexChanged);
             // 
             // txtReason
             // 
@@ -278,14 +297,38 @@
             this.txtReason.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.txtReason.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // uiButton1
+            // 
+            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
+            this.uiButton1.Location = new System.Drawing.Point(925, 520);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Radius = 12;
+            this.uiButton1.Size = new System.Drawing.Size(120, 39);
+            this.uiButton1.TabIndex = 22;
+            this.uiButton1.Text = "重置";
+            this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiButton2
+            // 
+            this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.uiButton2.Location = new System.Drawing.Point(782, 520);
+            this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton2.Name = "uiButton2";
+            this.uiButton2.Radius = 12;
+            this.uiButton2.Size = new System.Drawing.Size(120, 39);
+            this.uiButton2.TabIndex = 21;
+            this.uiButton2.Text = "儲存";
+            this.uiButton2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // UserControlShift
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.uiTabControlShift);
-            this.Controls.Add(this.uiBtnReset);
-            this.Controls.Add(this.uiBtnSave);
             this.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "UserControlShift";
@@ -318,5 +361,8 @@
         private System.Windows.Forms.Label labelShiftEndTime;
         private System.Windows.Forms.Label labelShiftRuleType;
         private System.Windows.Forms.ComboBox cbShiftRuleType;
+        private System.Windows.Forms.Label label1;
+        private Sunny.UI.UIButton uiButton1;
+        private Sunny.UI.UIButton uiButton2;
     }
 }

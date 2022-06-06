@@ -15,7 +15,7 @@ namespace ahoy
         [STAThread]
         public static void Main()
         {
-            //Application.ThreadException += Application_ThreadException;
+            Application.ThreadException += Application_ThreadException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 #if DEBUG

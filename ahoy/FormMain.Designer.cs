@@ -60,6 +60,9 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.userControlShift1 = new ahoy.UserControlShift();
+            this.userControlAttendance1 = new ahoy.UserControlAttendance();
+            this.userControlApproval1 = new ahoy.UserControlApproval();
             this.panelStartbar.SuspendLayout();
             this.panelWorkspace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackGround)).BeginInit();
@@ -100,6 +103,7 @@
             this.btnGoToUserProfiles.TabIndex = 4;
             this.btnGoToUserProfiles.Text = "個人頁面";
             this.btnGoToUserProfiles.UseVisualStyleBackColor = false;
+            this.btnGoToUserProfiles.Visible = false;
             // 
             // btnLogout
             // 
@@ -118,6 +122,9 @@
             // panelWorkspace
             // 
             this.panelWorkspace.Controls.Add(this.pictureBoxBackGround);
+            this.panelWorkspace.Controls.Add(this.userControlShift1);
+            this.panelWorkspace.Controls.Add(this.userControlAttendance1);
+            this.panelWorkspace.Controls.Add(this.userControlApproval1);
             this.panelWorkspace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelWorkspace.Location = new System.Drawing.Point(200, 61);
             this.panelWorkspace.Name = "panelWorkspace";
@@ -442,6 +449,36 @@
             this.pictureBoxLogo.TabIndex = 0;
             this.pictureBoxLogo.TabStop = false;
             // 
+            // userControlShift1
+            // 
+            this.userControlShift1.BackColor = System.Drawing.Color.White;
+            this.userControlShift1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.userControlShift1.Location = new System.Drawing.Point(0, 0);
+            this.userControlShift1.Margin = new System.Windows.Forms.Padding(5);
+            this.userControlShift1.Name = "userControlShift1";
+            this.userControlShift1.Size = new System.Drawing.Size(1064, 620);
+            this.userControlShift1.TabIndex = 4;
+            // 
+            // userControlAttendance1
+            // 
+            this.userControlAttendance1.BackColor = System.Drawing.Color.White;
+            this.userControlAttendance1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.userControlAttendance1.Location = new System.Drawing.Point(0, 0);
+            this.userControlAttendance1.Margin = new System.Windows.Forms.Padding(5);
+            this.userControlAttendance1.Name = "userControlAttendance1";
+            this.userControlAttendance1.Size = new System.Drawing.Size(1064, 620);
+            this.userControlAttendance1.TabIndex = 4;
+            // 
+            // userControlApproval1
+            // 
+            this.userControlApproval1.BackColor = System.Drawing.Color.White;
+            this.userControlApproval1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.userControlApproval1.Location = new System.Drawing.Point(0, 0);
+            this.userControlApproval1.Margin = new System.Windows.Forms.Padding(5);
+            this.userControlApproval1.Name = "userControlApproval1";
+            this.userControlApproval1.Size = new System.Drawing.Size(1064, 620);
+            this.userControlApproval1.TabIndex = 1;
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -452,7 +489,7 @@
             this.Controls.Add(this.panelStartbar);
             this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
@@ -513,6 +550,9 @@
         private System.Windows.Forms.PictureBox pictureBoxBackGround;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private System.Windows.Forms.Button btnGoToUserProfiles;
+        private UserControlShift userControlShift1;
+        private UserControlAttendance userControlAttendance1;
+        private UserControlApproval userControlApproval1;
     }
 }
 

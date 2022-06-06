@@ -21,10 +21,10 @@ namespace ahoy
         {
 #if DEBUG
             // TO DO: 接上資料庫的Account : done
-
             try
             {
-                var UserAccount = ace.Account.ToList().SingleOrDefault(x => x.account == txtInputAccount.Text && x.password == txtInputPassword.Text&&x.isEnable == true);
+                var UserAccount = ace.Account.ToList().SingleOrDefault(x => x.account == txtInputAccount.Text && x.password == txtInputPassword.Text&&x.isEnable == true); 
+                
                 globalVariable.user = UserAccount;
             }
             catch

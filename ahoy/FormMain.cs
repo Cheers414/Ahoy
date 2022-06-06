@@ -40,27 +40,27 @@ namespace ahoy
 
         private void btnHR_Click(object sender, EventArgs e)
         {
-            //UserControlHR.BringToFront();
+           // userControlHR.BringToFront();
         }
 
         private void btnSalary_Click(object sender, EventArgs e)
         {
-            //UserControlSalary.BringToFront();
+           // userControlSalary.BringToFront();
         }
 
         private void btnShift_Click(object sender, EventArgs e)
         {
-            //UserControlShift.BringToFront();
+            userControlShift1.BringToFront();
         }
 
         private void btnApproval_Click(object sender, EventArgs e)
         {
-            //UserControlApproval.BringToFront();
+            userControlApproval1.BringToFront();
         }
 
         private void btnAttendance_Click(object sender, EventArgs e)
         {
-            //UserControlAttendance.BringToFront();
+           userControlAttendance1.BringToFront();
         }
     }
 }

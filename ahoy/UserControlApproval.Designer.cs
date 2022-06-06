@@ -1017,7 +1017,6 @@
         private Sunny.UI.UIButton btnApplyFormOk;
         private System.Windows.Forms.Label label6;
         private Sunny.UI.UIRichTextBox txtReason;
-        private System.Windows.Forms.BindingSource ahoyCorpDataSetBindingSource;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
